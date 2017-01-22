@@ -1,3 +1,6 @@
+var Dimensions = require('Dimensions');
+var window = Dimensions.get('window');
+
 import React ,{Component} from 'react'
 import {View ,Image ,StyleSheet ,TouchableHighlight} from 'react-native'
 import {Actions} from 'react-native-router-flux'
@@ -9,72 +12,83 @@ export default class Home extends Component {
     return (
       
     <View style={styles.container}>
-        
-        <View style={styles.row}>
-        </View>
-        <View style={styles.row}>
-        </View>
         <View style={styles.row}> 
+          <View style={styles.col}>
             <TouchableHighlight onPress={Actions.Rule}>
-                <View style={styles.col}>
-                    <Image style={styles.img}
-                    source={require('./img/rule.png') }
-                    />
-                </View> 
+              <Image style={styles.img}
+              source={require('./img/rule.png') }
+              />
             </TouchableHighlight>
-        
+          </View> 
+  
+          <View style={styles.col}>
             <TouchableHighlight onPress={Actions.Intro}>
-                <View style={styles.col}>
-                    <Image style={styles.img}
-                      source={require('./img/intro.png')}
-                    />
-                </View>
+              <Image style={styles.img}
+                source={require('./img/intro.png')}
+              />
             </TouchableHighlight>
+          </View>
 
+          <View style={styles.col}>
             <TouchableHighlight onPress={Actions.Comment}>
-                <View style={styles.col}>
-                    <Image style={styles.img}
-                      source={require('./img/comment.png')}
-                    />
-                </View>
+              <Image style={styles.img}
+                source={require('./img/comment.png')}
+              />
             </TouchableHighlight>
+          </View>
         </View>
         
 
         <View style={styles.row}>
-            <View style={styles.col}>
-            <Image style={styles.img}
-              source={require('./img/databases.png')}
-            />
+          <View style={styles.col}>
+            <TouchableHighlight onPress={Actions.Database}>
+                <Image style={styles.img}
+                  source={require('./img/databases.png')}
+                />
+            </TouchableHighlight>
           </View> 
+
           <View style={styles.col}>
-            <Image style={styles.img}
-              source={require('./img/request.png')}
-            />
+            <TouchableHighlight onPress={Actions.Request}>
+                <Image style={styles.img}
+                  source={require('./img/request.png')}
+                />
+            </TouchableHighlight>
           </View>
+
           <View style={styles.col}>
-            <Image style={styles.img}
-              source={require('./img/reserve.png')}
-            />
+            <TouchableHighlight onPress={Actions.Reserve}>
+                <Image style={styles.img}
+                  source={require('./img/reserve.png')}
+                />
+            </TouchableHighlight>
           </View>
         </View>
 
 
         <View style={styles.row}>
           <View style={styles.col}>
-            <Image style={styles.img}
-              source={require('./img/search.png')}
-            />
+            <TouchableHighlight onPress={Actions.Search}>
+              <Image style={styles.img}
+                source={require('./img/search.png')}
+              />
+            </TouchableHighlight>
           </View> 
+
           <View style={styles.col}>
-            <Image style={styles.img}
-              source={require('./img/delivery.png')}
-            />
+            <TouchableHighlight onPress={Actions.Delivery}>
+              <Image style={styles.img}
+                source={require('./img/delivery.png')}
+              />
+            </TouchableHighlight>
           </View>
+
           <View style={styles.col}>
-            <Image style={styles.img}
-              source={require('./img/interloan.png')}
-            />
+            <TouchableHighlight onPress={Actions.Interlibloan}>
+              <Image style={styles.img}
+                source={require('./img/interloan.png')}
+              />
+            </TouchableHighlight>
           </View>
         </View> 
 
@@ -86,21 +100,27 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 10
   },
   row:{
-    flex:1,
+    padding: 5,
+    marginBottom: 10,
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   col:{
-    flex:1,
+    padding: 5,
   },
   img:{
-    flex:1,
+    height: window.width/3.5,
+    width: window.width/3.5,
     resizeMode: 'contain'
   }
 
- })
+})
 
 
 /*
@@ -114,11 +134,57 @@ import { Container, Content, Card, CardItem, Text, Icon } from 'native-base';
                         </ListItem>
                    </List>
                    ------------------------
+                   =========================
+const styles = StyleSheet.create({
+  container: {
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 10
+  },
+  row:{
+    padding: 5,
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  col:{
+    padding: 5,
+  },
+  img:{
+    height: 110,
+    width: 110,
+    resizeMode: 'contain'
+  }
+
+})
+                   =========================
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  row:{
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  col:{
+    padding: 5,
+    flex : 1
+  },
+  img:{
+    flex : 1,
+    resizeMode: 'contain'
+  }
+
+})
+                   ==========================
 
 export default class Home extends Component{
-	render(){
-		return(
-			<Container>
+    render(){
+        return(
+            <Container>
                 <Content>
                     <Card>
                         <CardItem>
@@ -152,7 +218,7 @@ export default class Home extends Component{
                    </Card>
                 </Content>
             </Container>
-		)
-	}
+        )
+    }
 } 
 */

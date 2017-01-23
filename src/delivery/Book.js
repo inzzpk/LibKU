@@ -47,7 +47,7 @@ export default class Book extends Component{
               </InputGroup>
             </ListItem>
 
-            <Text style={{fontWeight: 'bold'}}>ห้องสมุดที่สะดวกรับ</Text>
+            <Text style={{fontWeight: 'bold' , marginTop: 10}}>ห้องสมุดที่สะดวกรับ</Text>
             <ListItem>
               <Picker
                         iosHeader="ห้องสมุดที่สะดวกรับ"

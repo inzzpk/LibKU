@@ -11,7 +11,7 @@ export default class Article extends Component{
         super(props);
         this.state = {
             selectedItem: undefined,
-            selected1: 'ห้องสมุดคณะประมง',
+            selected1: 'ไปรษณีย์ธรรมดา',
             results: {
                 items: []
             }
@@ -82,27 +82,18 @@ export default class Article extends Component{
                 <Input placeholder='รวมหน้า (Total Pages)' />
               </InputGroup>
             </ListItem>
-            <Text style={{fontWeight: 'bold' , marginTop: 10 }}>ห้องสมุดที่สะดวกรับ</Text>
+            <Text style={{fontWeight: 'bold' , marginTop: 10 }}>วิธีจัดส่ง</Text>
           	<ListItem>
           		<Picker
-                        iosHeader="ห้องสมุดที่สะดวกรับ"
+                        iosHeader="วิธีจัดส่ง"
                         mode="dropdown"
                         selectedValue={this.state.selected1}
                         onValueChange={this.onValueChange.bind(this)}>
-                        <Item value="ห้องสมุดคณะประมง" label="ห้องสมุดคณะประมง" />
-						            <Item value="ห้องสมุดคณะวนศาสตร์" label="ห้องสมุดคณะวนศาสตร์" />
-						            <Item value="ห้องสมุดคณะอุตสาหกรรมเกษตร" label="ห้องสมุดคณะอุตสาหกรรมเกษตร" />
-						            <Item value="ห้องสมุดคณะวิทยาศาสตร์" label="ห้องสมุดคณะวิทยาศาสตร์" />
-						            <Item value="ห้องสมุดคณะวิศวกรรมศาสตร์" label="ห้องสมุดคณะวิศวกรรมศาสตร์" />
-						            <Item value="ห้องสมุดคณะสถาปัตยกรรมศาสตร์" label="ห้องสมุดคณะสถาปัตยกรรมศาสตร์" />
-						            <Item value="ห้องสมุดคณะมนุษยศาสตร์" label="ห้องสมุดคณะมนุษยศาสตร์" />
-						            <Item value="ห้องสมุดคณะศึกษาศาสตร์" label="ห้องสมุดคณะศึกษาศาสตร์" />
-						            <Item value="ห้องสมุดคณะสังคมศาสตร์" label="ห้องสมุดคณะสังคมศาสตร์" />
-						            <Item value="ห้องสมุดคณะเศรษฐศาสตร์และบริหารธุรกิจ (ห้องสมุดพิทยาลงกรณ)" label="ห้องสมุดคณะเศรษฐศาสตร์และบริหารธุรกิจ (ห้องสมุดพิทยาลงกรณ)" />
-						            <Item value="ห้องสมุดคณะสัตวแพทยศาสตร์" label="ห้องสมุดคณะสัตวแพทยศาสตร์" />
-						            <Item value="ห้องสมุดสาขาอาหาร สถาบันค้นคว้าและพัฒนาผลิตภัณฑ์อาหาร" label="ห้องสมุดสาขาอาหาร สถาบันค้นคว้าและพัฒนาผลิตภัณฑ์อาหาร" />
-						            <Item value="ห้องสมุดภาควิชาเคมี" label="ห้องสมุดภาควิชาเคมี" />
-						            <Item value="ห้องสมุดวิทยาลัยสิ่งแวดล้อม" label="ห้องสมุดวิทยาลัยสิ่งแวดล้อม" />
+                        <Item value="ไปรษณีย์ธรรมดา" label="ไปรษณีย์ธรรมดา (Regular Letter)" />
+						            <Item value="ด่วนพิเศษ EMS" label="ด่วนพิเศษ EMS (Express Mail Service)" />
+						            <Item value="สแกนไฟล์" label="สแกนไฟล์เอกสารแนบ E-Mail (ไม่เกิน 10 แผ่น)" />
+						            <Item value="โทรสาร" label="โทรสาร (Fax)" />
+						            <Item value="Fulltext" label="Fulltext" />
                    </Picker>
           	</ListItem>
           </List>

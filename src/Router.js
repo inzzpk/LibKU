@@ -15,7 +15,8 @@ import Reserve from './Reserve'
 import Search from './Search'
 //import Delivery from './Delivery'
 import Delivery from './delivery/index'
-import Interlibloan from './Interlibloan'
+//import Interlibloan from './Interlibloan'
+import Interlibloan from './interlibloan/index'
 
 const RouterComponent = () => {
 	return (

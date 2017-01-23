@@ -6,8 +6,8 @@ export default class Reserve extends Component{
 	render(){
 		return(
 			<View>
-				<Text>Reserve</Text>
-				<Text onPress={Actions.Home}> Go Home </Text>
+				<Text>มี Application นี้โดยเฉพาะ จัดทำโดยทางเอกชน</Text>
+				
 			</View>
 		)
 	}

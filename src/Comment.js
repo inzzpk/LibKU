@@ -1,47 +1,69 @@
 import React ,{Component} from 'react'
-import {View , Text} from 'react-native'
+import {View , Text , StyleSheet} from 'react-native'
 import {Actions} from 'react-native-router-flux'
-import { Container, Content, List, ListItem, InputGroup, Input, Icon } from 'native-base';
+import { Container, Content, List, ListItem, InputGroup, Input, Icon, Button } from 'native-base';
 
 export default class Comment extends Component{
 	render(){
 		return(
 			 <Container>
-                <Content>
-                    <List>
-                        <ListItem>
-	                        <InputGroup iconRight success>
-	                        <Icon name='ios-checkmark-circle' style={{color:'#00C497'}}/>
-	                        <Input placeholder='ชื่อ-นามสกุล' />
-	                    	</InputGroup>
-                        </ListItem>
+        <Content>
+          <List>
+            <ListItem>
+              <InputGroup style={styles.box}>
+                <Input placeholder='ชื่อ-นามสกุล' />
+              </InputGroup>
+            </ListItem>
                     
-                        <ListItem>
-                            <InputGroup>
-                                <Input placeholder='หมายเลขโทรศัพท์' />
-                            </InputGroup>
-                        </ListItem>
+            <ListItem>
+              <InputGroup style={styles.box}>
+                <Input placeholder='หมายเลขโทรศัพท์' />
+              </InputGroup>
+            </ListItem>
                     
-                        <ListItem>
-                            <InputGroup >
-                                <Input placeholder='E-mail' />
-                            </InputGroup>
-                        </ListItem>
+            <ListItem>
+              <InputGroup style={styles.box}>
+                <Input placeholder='E-mail' />
+              </InputGroup>
+            </ListItem>
 
-                        <ListItem>
-                            <InputGroup >
-                                <Input placeholder='วันที่ใช้บริการ' />
-                            </InputGroup>
-                        </ListItem>
+            <ListItem>
+              <InputGroup style={styles.box}>
+                <Input placeholder='วันที่ใช้บริการ' />
+              </InputGroup>
+            </ListItem>
                    
-                        <ListItem>
-                            <InputGroup >
-                                <Input stackedLabel label='ข้อเสนอแนะ / ร้องเรียน' placeholder='พิมตรงนี้' />
-                            </InputGroup>
-                        </ListItem>
-                    </List>
-                </Content>
-            </Container>
+            <ListItem>
+              <InputGroup style={styles.box}>
+                <Input stackedLabel label='ข้อเสนอแนะ / ร้องเรียน' placeholder='พิมตรงนี้' />
+                  </InputGroup>
+            </ListItem>
+          </List>
+          <Button info style={styles.b}> ส่ง </Button>
+        </Content>
+      </Container>
 		)
 	}
-} 
+}
+const styles = StyleSheet.create({
+  container: {
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 10
+  },
+  box:{
+    marginLeft: 5,
+    marginRight: 25,
+    marginTop: 10,
+    
+  },
+  b:{
+    marginTop: 10,
+    marginLeft: 160,
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+  }
+  
+
+})

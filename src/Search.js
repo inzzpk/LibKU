@@ -8,14 +8,13 @@ export default class Search extends Component{
 	render(){
 		return(
 			<View style={styles.container}>
+        <Text>Search KU Library & Worldwide Library Catalog</Text>
+        <InputGroup borderType='rounded' style={styles.box} >
+          <Input placeholder='Type your text here'/>  
+        </InputGroup>
+        <Button rounded info style={styles.b}> Search </Button>
                 
-                    <Text>Search KU Library & Worldwide Library Catalog</Text>
-                    <InputGroup borderType='rounded' style={styles.box} >
-                        <Input placeholder='Type your text here'/>  
-                    </InputGroup>
-                    <Button rounded info style={styles.b}> Search </Button>
-                
-            </View>
+      </View>
 		)
 	}
 } 

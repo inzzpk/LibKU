@@ -13,7 +13,8 @@ import Database from './database/index'
 import Request from './Request'
 import Reserve from './Reserve'
 import Search from './Search'
-import Delivery from './Delivery'
+//import Delivery from './Delivery'
+import Delivery from './delivery/index'
 import Interlibloan from './Interlibloan'
 
 const RouterComponent = () => {

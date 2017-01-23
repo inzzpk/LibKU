@@ -25,8 +25,6 @@ export default class Request extends Component{
 
 
 
-
-
 	render(){
 		return(
 			 <Container>

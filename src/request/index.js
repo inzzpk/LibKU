@@ -39,16 +39,16 @@ export default class index extends Component{
           	<Text style={{fontWeight: 'bold'}}>ประเภททรัพยากรสารสนเทศ</Text>
           	<ListItem>
           		<Picker
-                        iosHeader="ประเภททรัพยากรสารสนเทศ"
-                        mode="dropdown"
-                        selectedValue={this.state.selected1}
-                        onValueChange={this.onValueChange.bind(this)}>
-                        <Item label="หนังสือภาษาไทย (Thai Books)" value="key0" />
-                        <Item label="หนังสือภาษาต่างประเทศ (Foreign books)" value="key1" />
-                        <Item label="วารสารภาษาไทย (Thai Journals)" value="key2" />
-                        <Item label="วารสารภาษาต่างประเทศ (Foreign Journals)" value="key3" />
-                        <Item label="โสตทัศนวัสดุ (audiovisuals)" value="key4" />
-                   </Picker>
+                iosHeader="ประเภททรัพยากรสารสนเทศ"
+                mode="dropdown"
+                selectedValue={this.state.selected1}
+                onValueChange={this.onValueChange.bind(this)}>
+                <Item label="หนังสือภาษาไทย (Thai Books)" value="key0" />
+                <Item label="หนังสือภาษาต่างประเทศ (Foreign books)" value="key1" />
+                <Item label="วารสารภาษาไทย (Thai Journals)" value="key2" />
+                <Item label="วารสารภาษาต่างประเทศ (Foreign Journals)" value="key3" />
+                <Item label="โสตทัศนวัสดุ (audiovisuals)" value="key4" />
+              </Picker>
           	</ListItem>
             <ListItem>
               <InputGroup style={styles.box}>

@@ -20,10 +20,12 @@ import Search from './Search'
 import Delivery from './delivery/index'
 //import Interlibloan from './Interlibloan'
 import Interlibloan from './interlibloan/index'
+import testContainer from 'LibKU/src/containers/testContainer'
 
 const RouterComponent = () => {
 	return (
 			<Router sceneStyle={{paddingTop: 65}}>
+				<Scene key='test' component={testContainer} title='Test' hideNavBar={true} />
 				<Scene key='Home' component={Home} title='Home' />
 				<Scene key='About' component={About} title='About' />
 				<Scene key='Rule' component={Rule} title='ระเบียบการใช้' />

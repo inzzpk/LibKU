@@ -28,7 +28,6 @@ export default class test extends Component {
   }
 
   render() {
-    console.log(this.state);
  
     return (
       <Container>

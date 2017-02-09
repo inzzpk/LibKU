@@ -7,27 +7,31 @@ import axios from 'axios';
 
 export default class test extends Component {
 
-    state = { albums: [] }
+    state = { books: [] }
 
     componentWillMount() {
-    //axios.get('https://inzzpk.in.th/book_info.json')
-    axios.get('https://rallycoding.herokuapp.com/api/music_albums')
-      .then(response => this.setState({ albums: response.data }));
+    //axios.get('http://inzzpk.in.th/book_info.json')
+    axios.get('http://localhost:8888/book_info.json')
+    // axios.get('http://158.108.48.254/brequest/book_info.json')
+    //axios.get('http://158.108.48.254/brequest/bookinfo.php')
+      .then(response => this.setState({ books: response.data }));
+    //.then(response => console.log(response.data))
+    //axios.get('https://rallycoding.herokuapp.com/api/music_albums')
+      // .then(response => this.setState({ books: response.data }));
   }
  
+
   renderBooks() {
-    return this.state.albums.map(album =>
-      <ListItem>
+    return this.state.books.map((book,index) =>
+      <ListItem key={index}>
           <Thumbnail square size={100} source={require('./img/nov2.jpg')} />
-          <Text key={album.title} style={{fontWeight: 'bold'}}>{album.title}</Text>
-          <Text note key={album.artist}>{album.artist}</Text>
+          <Text key={book.title} style={{fontWeight: 'bold'}}>{book.title}</Text>
+          <Text key={book.author}>{book.author}</Text>
       </ListItem>          
     );
   }
 
   render() {
-    console.log(this.state);
- 
     return (
       <Container>
         <Content>
@@ -39,3 +43,6 @@ export default class test extends Component {
     );
   }
 }
+
+///<Thumbnail square size={100} source={{uri: book.image}} />
+///<Thumbnail square size={100} source={require('./img/nov2.jpg')} />

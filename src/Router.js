@@ -23,8 +23,8 @@ import Interlibloan from './interlibloan/index'
 
 const RouterComponent = () => {
 	return (
-			<Router sceneStyle={{paddingTop: 65}}>
-				<Scene key='Home' component={Home} title='Home' />
+			<Router sceneStyle={{paddingTop: 65 }} >
+				<Scene key='Home' component={Home} title='KU Lib App' />
 				<Scene key='About' component={About} title='About' />
 				<Scene key='Rule' component={Rule} title='ระเบียบการใช้' />
 					<Scene key='Rate' component={Rate} title='อัตราค่าบริการ' />

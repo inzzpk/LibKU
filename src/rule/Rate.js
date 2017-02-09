@@ -11,7 +11,7 @@ export default class Rate extends Component{
 		return(
             <View style={styles.container}>         
                 <Text>อัตราค่าบริการ</Text>
-                <Image style={{resizeMode: 'contain' , width: window.width}}
+                <Image style={{resizeMode: 'contain'}}
                     source={require('./img/rate.png') }
                 />
             </View>

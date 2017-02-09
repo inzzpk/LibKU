@@ -11,13 +11,18 @@ export default class test extends Component {
 
     componentWillMount() {
     //axios.get('http://inzzpk.in.th/book_info.json')
-    axios.get('http://localhost:8888/book_info.json')
+    //axios.get('http://localhost:8888/book_info.json')
     // axios.get('http://158.108.48.254/brequest/book_info.json')
     //axios.get('http://158.108.48.254/brequest/bookinfo.php')
-      .then(response => this.setState({ books: response.data }));
+    //  .then(response => this.setState({ books: response.data }));
     //.then(response => console.log(response.data))
     //axios.get('https://rallycoding.herokuapp.com/api/music_albums')
       // .then(response => this.setState({ books: response.data }));
+    // axios.get('https://rallycoding.herokuapp.com/api/music_albums')
+    axios.get(`http://158.108.48.254/brequest/book_info.json`)
+      .then(res => this.setState({ books: res.data }))
+      .catch(err => console.log(err))
+      // .then(response => this.setState({ albums: response.data }));
   }
  
 

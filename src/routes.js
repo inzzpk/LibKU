@@ -1,3 +1,4 @@
+////////////USE THIS ////////////////
 import React from 'react'
 import {Scene , Router} from 'react-native-router-flux'
 import Home from './Home'
@@ -16,6 +17,7 @@ import Request from './request/index'
 import Barcode from './request/Barcode'
 import Reserve from './Reserve'
 import Search from './Search'
+import Login from './Login'
 //import Delivery from './Delivery'
 import Delivery from './delivery/index'
 //import Interlibloan from './Interlibloan'
@@ -25,7 +27,6 @@ import testContainer from 'LibKU/src/containers/testContainer'
 const RouterComponent = () => {
 	return (
 			<Router sceneStyle={{paddingTop: 65}}>
-				<Scene key='test' component={testContainer} title='Test' hideNavBar={true} />
 				<Scene key='Home' component={Home} title='KU Lib App' />
 				<Scene key='About' component={About} title='About' />
 				<Scene key='Rule' component={Rule} title='ระเบียบการใช้' />
@@ -38,9 +39,11 @@ const RouterComponent = () => {
 				<Scene key='Reserve' component={Reserve} title='จองใช้ทรัพยากร' />
 				<Scene key='Search' component={Search} title='สืบค้นทรัพยากร' />
 				<Scene key='Delivery' component={Delivery} title='นำส่งหนังสือ / บทความ' />
-				<Scene key='Interlibloan' component={Interlibloan} title='ยืม / ถ่ายสำเนา ระหว่างห้องสมุด' />
+				<Scene key='Interlibloan' component={Login} title='ยืม / ถ่ายสำเนา ระหว่างห้องสมุด' />
 			</Router>
 		)
 }
 
 export default RouterComponent
+
+//<Scene key='test' component={testContainer} title='Test' hideNavBar={true} />

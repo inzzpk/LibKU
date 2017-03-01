@@ -27,7 +27,7 @@ export default class Article extends Component{
 	render(){
 		return(
 			<Container>
-        <Content>
+        <Content padder>
 					<List>
             <ListItem>
               <InputGroup style={styles.box}>
@@ -106,7 +106,7 @@ export default class Article extends Component{
                    </Picker>
           	</ListItem>
           </List>
-          <Button info style={styles.b}> ส่ง </Button>
+          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}> ส่ง </Button>
 				</Content>
       </Container>
 		)

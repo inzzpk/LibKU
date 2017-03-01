@@ -26,7 +26,7 @@ import testContainer from 'LibKU/src/containers/testContainer'
 
 const RouterComponent = () => {
 	return (
-			<Router sceneStyle={{paddingTop: 65}}>
+			<Router sceneStyle={{paddingTop: 65}} navigationBarStyle={{backgroundColor: '#40E0D0' }}>
 				<Scene key='Home' component={Home} title='KU Lib App' />
 				<Scene key='About' component={About} title='About' />
 				<Scene key='Rule' component={Rule} title='ระเบียบการใช้' />

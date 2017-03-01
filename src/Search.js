@@ -7,14 +7,15 @@ import { Container, Content, InputGroup, Input, Icon, Button }from 'native-base'
 export default class Search extends Component{
 	render(){
 		return(
-			<View style={styles.container}>
-        <Text>Search KU Library & Worldwide Library Catalog</Text>
-        <InputGroup borderType='rounded' style={styles.box} >
-          <Input placeholder='Type your text here'/>  
-        </InputGroup>
-        <Button rounded info style={styles.b}> Search </Button>
-                
-      </View>
+			<Container>
+        <Content padder>
+          <Text>Search KU Library & Worldwide Library Catalog</Text>
+          <InputGroup borderType='rounded' style={styles.box} >
+            <Input placeholder='Type your text here'/>  
+          </InputGroup>
+          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}> Search </Button>
+        </Content>
+      </Container>
 		)
 	}
 } 

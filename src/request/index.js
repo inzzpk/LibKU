@@ -28,7 +28,7 @@ export default class index extends Component{
 	render(){
 		return(
 			 <Container>
-        <Content>
+        <Content padder>
         	<TouchableHighlight onPress={Actions.Barcode}>
               <Image style={{height: 100 , resizeMode: 'contain'}}
               source={require('./img/barcode.png') }
@@ -74,7 +74,7 @@ export default class index extends Component{
               </InputGroup>
             </ListItem>
           </List>
-          <Button info style={styles.b}> ส่ง </Button>
+          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}> ส่ง </Button>
         </Content>
       </Container>
 		)

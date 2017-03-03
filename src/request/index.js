@@ -30,7 +30,7 @@ export default class index extends Component{
 			 <Container>
         <Content padder>
         	<TouchableHighlight onPress={Actions.Barcode}>
-              <Image style={{height: 100 , resizeMode: 'contain'}}
+              <Image style={{height: 100 , resizeMode: 'contain' , alignSelf: 'center' , marginBottom: 20}}
               source={require('./img/barcode.png') }
               />
             </TouchableHighlight>

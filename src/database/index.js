@@ -1,93 +1,41 @@
+
 import React ,{Component} from 'react'
-import {View ,Image} from 'react-native'
+import {View , Text} from 'react-native'
 import {Actions} from 'react-native-router-flux'
-import { Container, Content, List, ListItem, Text } from 'native-base';
+import { Container, Content, List, ListItem, Thumbnail, H3 } from 'native-base';
+import axios from 'axios';
 
-export default class index extends Component{
-	render(){
+export default class index extends Component {
 
-		var items = [	'Ebsco A to Z' ,
-						'KU Library Catalog' ,
-						'2ebook Digital Library' ,
-						'ABI/INFORM' ,
-						'Academic Search Complete' ,
-						'Access English' ,
-						'ACM Digital Library' ,
-						'ACS Publications' ,
-						'Acta Horticulturae Online' ,
-						'AIP Journals' ,
-						'APS Journals' ,
-						'ANNUAL REVIEWS' ,
-						'ASCE' ,
-						'ASME' ,
-						'Audiobook Collection (EBSCOhost)' ,
-						'Business Source Complete',
-						'CAB Direct',
-						'Cambridge Books Online',
-						'Communication & Mass Media Complete (CMMC)',
-						'Computers & Applied Sciences Complete (CASC)',
-						'CRCnetBASE eBooks',
-						'ProQuest Dissertations & Theses: Full Text',
-						'EBSCO eBook Collection',
-						'EconLit™ with Full Text',
-						'Education Research Complete',
-						'Emerald Management (EM92)',
-						'Emerald eBook Series',
-						'Emerald Emerging Markets Case Studies Collection (EEMCS)',
-						'Environment Complete',
-						'Food Science Source',
-						'Full-Text Finder',
-						'Gale Lingo',
-						'Gale Virtual Reference Library',
-						'Humanities Source',
-						'IEEE/IEE Electronic Library (IEL)',
-						'IET Digital Library',
-						'IET Inscpec Direct',
-						'iQNewsClip',
-						'ISI Web of Science',
-						'Knovel',
-						'KU E-Thesis',
-						'Library Press Display',
-						'National Geographic Virtual Library',
-						'NewsCenter',
-						'Oxford Scholarship Online',
-						'PressReader',
-						'Project Euclid',
-						'ProQuest Agricultural Science Collection',
-						'Reaxys',
-						'Science Online & Science Now',
-						'Science Direct eBooks',
-						'ScienceDirect eJournals',
-						'SciFinder',
-						'SCOPUS',
-						'Social Sciences Full Text (H.W. Wilson)',
-						'SocINDEX with Full Text',
-						'SPORTDiscus WITH FULLTEXT',
-						'SpringerLink(E-books)',
-						'SpringerLink (E-journals)',
-						'Taylor & Francis eBooks',
-						'Taylor & Francis Journals',
-						'TDC (ThaiLIS Digital Collection)',
-						'Testing and Education Reference Center (TERC)',
-						'Wiley Online Library',
-						'Wiley eBooks',
-						'Wilson Web',
-						'Woodhead ebooks',
-						'World Scientific eBooks',
-						'WorldCat Local & WorldCat Knowledge Base'];
+    state = { books: [] }
 
-		return(
-			<Container>
-                <Content>
-                    <List dataArray={items}
-                        renderRow={(item) =>
-                            <ListItem>
-                                <Text>{item}</Text>
-                            </ListItem>
-                        }>
-                    </List>
-                </Content>
-            </Container>
-		)
-	}
-} 
+    componentWillMount() {
+    axios.get(`http://localhost:8888/Back-LibKU/public/api/dbsinfos`)
+      .then(res => this.setState({ books: res.data }))
+      .catch(err => console.log(err))
+  }
+ 
+
+  renderBooks() {
+    return this.state.books.map((book,index) =>
+      <ListItem key={index} onPress={Actions.DBInfo}>
+          <Text key={book.name} style={{fontWeight: 'bold'}}>{book.name}</Text>
+      </ListItem>          
+    );
+  }
+
+  render() {
+    return (
+      <Container>
+        <Content>
+          <List>
+            {this.renderBooks()}
+          </List>
+        </Content>
+      </Container>
+    );
+  }
+}
+
+///<Thumbnail square size={100} source={{uri: book.image}} />
+///<Thumbnail square size={100} source={require('./img/nov2.jpg')} />

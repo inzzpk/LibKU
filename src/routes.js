@@ -12,6 +12,7 @@ import Intro from './intro/test'
 import Comment from './Comment'
 //import Database from './Database'
 import Database from './database/index'
+import DBInfo from './database/test'
 //import Request from './Request'
 import Request from './request/index'
 import Barcode from './request/Barcode'
@@ -34,6 +35,7 @@ const RouterComponent = () => {
 				<Scene key='Intro' component={Intro} title='แนะนำทรัพยากร' />
 				<Scene key='Comment' component={Comment} title='ร้องเรียน / เสนอแนะ' />
 				<Scene key='Database' component={Database} title='ฐานข้อมูล' />
+					<Scene key='DBInfo' component={DBInfo} title='ฐานข้อมูล' />
 				<Scene key='Request' component={Request} title='เสนอซื้อทรัพยากร' />
 					<Scene key='Barcode' component={Barcode} title='Barcode' />
 				<Scene key='Reserve' component={Reserve} title='จองใช้ทรัพยากร' />

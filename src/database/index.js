@@ -5,37 +5,54 @@ import {Actions} from 'react-native-router-flux'
 import { Container, Content, List, ListItem, Thumbnail, H3 } from 'native-base';
 import axios from 'axios';
 
-export default class index extends Component {
+import * as actions from '../actions'
+import { connect } from 'react-redux'
 
-    state = { books: [] }
+const { fetchDbsInfo } = actions
+
+class index extends Component {
+
+    //state = { books: [] }
 
     componentWillMount() {
-    axios.get(`http://localhost:8888/Back-LibKU/public/api/dbsinfos`)
-      .then(res => this.setState({ books: res.data }))
-      .catch(err => console.log(err))
-  }
+    	this.props.fetchDbsInfo()
+ 	}
  
 
-  renderBooks() {
-    return this.state.books.map((book,index) =>
-      <ListItem key={index} onPress={Actions.DBInfo}>
-          <Text key={book.name} style={{fontWeight: 'bold'}}>{book.name}</Text>
-      </ListItem>          
-    );
-  }
+  // renderBooks() {
+  //   return test.value.map((book,index) =>
+  //     <ListItem key={index} onPress={Actions.DBInfo}>
+  //         <Text key={book.name} style={{fontWeight: 'bold'}}>{book.name}</Text>
+  //     </ListItem>          
+  //   );
+  // }
 
   render() {
     return (
       <Container>
         <Content>
-          <List>
-            {this.renderBooks()}
-          </List>
+			<List dataArray={this.props.test.value} renderRow={(data,index) =>
+				<ListItem ListItem key={index} onPress={Actions.DBInfo}>
+					<Text>{data.name}</Text>
+				</ListItem>
+			} />
         </Content>
       </Container>
     );
   }
 }
 
-///<Thumbnail square size={100} source={{uri: book.image}} />
-///<Thumbnail square size={100} source={require('./img/nov2.jpg')} />
+const mapStatetoProps = (state) => ({
+	test: state.test
+})
+
+const mapDispatchtoProps = (dispatch) => ({
+	fetchDbsInfo(){
+		dispatch(fetchDbsInfo())
+	}
+})
+
+export default connect(
+	mapStatetoProps,
+	mapDispatchtoProps
+)(index)

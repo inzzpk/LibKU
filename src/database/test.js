@@ -31,6 +31,3 @@ export default class test extends Component {
         );
   }
 }
-
-///<Thumbnail square size={100} source={{uri: book.image}} />
-///<Thumbnail square size={100} source={require('./img/nov2.jpg')} />

@@ -14,11 +14,15 @@ const requestFailure = (err) => ({
 	payload: err
 })
 
+
+
 export default () => dispatch => {
 	dispatch(requestStart())
-	axios.get('https://jsonplaceholder.typicode.com/posts')
+	//axios.get('https://jsonplaceholder.typicode.com/posts')
+	axios.get('http://localhost:8888/Back-LibKU/public/api/dbsinfos')
 		.then((res) => {
 			dispatch(requestSuccess(res))
+			console.log(res)
 		})
 		.catch((err) => {
 			dispatch(requestFailure(err))

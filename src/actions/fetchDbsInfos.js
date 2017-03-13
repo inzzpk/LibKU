@@ -20,6 +20,7 @@ export function fetchDbsInfo() {
 	return (dispatch) => { 
 	dispatch(requestFetchDbsInfo())
 	axios.get('http://localhost:8888/Back-LibKU/public/api/dbsinfos')
+	//axios.get('http://192.168.1.4:8888/Back-LibKU/public/api/dbsinfos')
 		.then((res) => {
 			dispatch(requestFetchDbsInfoSuccess(res))
 			console.log(res)
@@ -29,3 +30,10 @@ export function fetchDbsInfo() {
 		})
 	}
 }
+
+// export function changeSubmissionState(index) {
+// 	return {
+// 		type: 'CHANGE_SUBMISSION_STATE',
+// 		index: index
+// 	}
+// }

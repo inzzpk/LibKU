@@ -5,6 +5,6 @@ import {fetchDbsInfo} from './fetchDbsInfo'
 
 
 export default combineReducers({
-	test: fetchDbsInfo
+	dbsInfo: fetchDbsInfo
 })
 

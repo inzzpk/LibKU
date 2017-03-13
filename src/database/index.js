@@ -12,27 +12,19 @@ const { fetchDbsInfo } = actions
 
 class index extends Component {
 
-    //state = { books: [] }
-
     componentWillMount() {
     	this.props.fetchDbsInfo()
  	}
- 
 
-  // renderBooks() {
-  //   return test.value.map((book,index) =>
-  //     <ListItem key={index} onPress={Actions.DBInfo}>
-  //         <Text key={book.name} style={{fontWeight: 'bold'}}>{book.name}</Text>
-  //     </ListItem>          
-  //   );
-  // }
 
   render() {
     return (
       <Container>
         <Content>
-			<List dataArray={this.props.test.value} renderRow={(data,index) =>
-				<ListItem ListItem key={index} onPress={Actions.DBInfo}>
+			<List dataArray={this.props.dbsInfo} renderRow={(data) =>
+				<ListItem ListItem key={data.id} 
+							onPress={() => Actions.DBInfo({id:data.id , name:data.name , 
+							link:data.link , intro:data.intro , url_pic:data.url_pic})} >
 					<Text>{data.name}</Text>
 				</ListItem>
 			} />
@@ -43,7 +35,7 @@ class index extends Component {
 }
 
 const mapStatetoProps = (state) => ({
-	test: state.test
+	dbsInfo: state.dbsInfo.value
 })
 
 const mapDispatchtoProps = (dispatch) => ({

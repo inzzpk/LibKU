@@ -1,5 +1,5 @@
 import React ,{Component} from 'react'
-import {View , Text, StyleSheet} from 'react-native'
+import {View , Text, StyleSheet, Linking} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { Container, Content, InputGroup, Input, Icon, Button }from 'native-base';
 
@@ -13,7 +13,8 @@ export default class Search extends Component{
           <InputGroup borderType='rounded' style={styles.box} >
             <Input placeholder='Type your text here'/>  
           </InputGroup>
-          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}> Search </Button>
+          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
+          onPress={() => Linking.openURL('http://google.com')}> Search </Button>
         </Content>
       </Container>
 		)

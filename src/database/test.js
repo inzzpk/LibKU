@@ -1,29 +1,27 @@
 
 import React ,{Component} from 'react'
-import {View , Text,Image} from 'react-native'
+import {View, Text, Image, Linking} from 'react-native'
 import {Actions} from 'react-native-router-flux'
-import { Container, Content, Card, CardItem, Thumbnail, H3 } from 'native-base';
+import { Container, Content, Card, CardItem, Thumbnail, H3, Button } from 'native-base';
 import axios from 'axios';
 
 export default class test extends Component {
 
-    state = { books: [] }
-
-    componentWillMount() {
-    axios.get(`http://localhost:8888/Back-LibKU/public/api/dbsinfosfirst`)
-      .then(res => this.setState({ books: res.data }))
-      .catch(err => console.log(err))
-  }
- 
-
-  render() {
+  render(props) {
+    console.log(this.props)
+    console.log(this.props.id)
     return (
             <Container>
                 <Content padder>
                     <Card style={{ flex: 0 }}>
                         <CardItem cardBody> 
-                            <Image style={{ resizeMode: 'contain' }} source={require('../img/kulogo.png')} /> 
-                                <Text key={this.state.books.name} style={{fontWeight: 'bold'}}>{this.state.books.name}</Text>
+                            <Image style={{height: 100 , resizeMode: 'contain' , alignSelf: 'center' , marginBottom: 20}}
+                                    source={require('../img/kulogo.png')} /> 
+                                <Text key={this.props.name} style={{fontWeight: 'bold'}}>{this.props.name}</Text>
+                                <Text key={this.props.intro} >{this.props.intro}</Text>
+                                <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
+                                onPress={() => Linking.openURL(this.props.link)}> ไปยังฐานข้อมูล </Button>
+
                         </CardItem>
                    </Card>
                 </Content>
@@ -31,3 +29,6 @@ export default class test extends Component {
         );
   }
 }
+
+//<Image style={{height: 100 , resizeMode: 'contain' , alignSelf: 'center' , marginBottom: 20}}
+//source={{uri: this.props.url_pic }} /> 

@@ -29,7 +29,7 @@ export default class test extends Component {
   renderBooks() {
     return this.state.books.map((book,index) =>
       <ListItem key={index}>
-          <Thumbnail square size={100} source={require('./img/nov2.jpg')} />
+          <Thumbnail square size={100} source={{uri: book.image}} />
           <Text key={book.title} style={{fontWeight: 'bold'}}>{book.title}</Text>
           <Text key={book.author}>{book.author}</Text>
       </ListItem>          

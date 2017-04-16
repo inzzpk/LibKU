@@ -12,13 +12,13 @@ export default class index extends Component{
                         <ListItem onPress={Actions.Rate}>
                             <Text>อัตราค่าบริการ</Text>
                         </ListItem>
-                        <ListItem>
+                        <ListItem onPress={Actions.Procedure}>
                             <Text>ข้อปฏิบัติ</Text> 
                         </ListItem>
-                        <ListItem>
+                        <ListItem onPress={Actions.Borrow}>
                             <Text>ระเบียบการยืม</Text> 
                         </ListItem>
-                        <ListItem>
+                        <ListItem onPress={Actions.Time}>
                             <Text>เวลาทำการ</Text> 
                         </ListItem>
                     </List>

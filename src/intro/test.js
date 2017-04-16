@@ -19,7 +19,10 @@ export default class test extends Component {
     //axios.get('https://rallycoding.herokuapp.com/api/music_albums')
       // .then(response => this.setState({ books: response.data }));
     // axios.get('https://rallycoding.herokuapp.com/api/music_albums')
-    axios.get(`http://158.108.48.254/brequest/book_info.json`)
+
+    //axios.get(`http://158.108.48.254/brequest/book_info.json`)
+
+    axios.get(`http://localhost:8888/Laravel-LibKU/public/api/bookinfos`)
       .then(res => this.setState({ books: res.data }))
       .catch(err => console.log(err))
       // .then(response => this.setState({ albums: response.data }));
@@ -31,7 +34,7 @@ export default class test extends Component {
       <ListItem key={index}>
           <Thumbnail square size={100} source={{uri: book.image}} />
           <Text key={book.title} style={{fontWeight: 'bold'}}>{book.title}</Text>
-          <Text key={book.author}>{book.author}</Text>
+          <Text key={book.callno}>{book.callno}</Text>
       </ListItem>          
     );
   }

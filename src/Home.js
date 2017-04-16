@@ -5,13 +5,14 @@ import React ,{Component} from 'react'
 import {View ,Image ,StyleSheet ,TouchableOpacity} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { Container, Content, List, ListItem, Text, Thumbnail } from 'native-base'
+import ImageSlider from 'react-native-image-slider';
 
 
 export default class Home extends Component {
     render() {
     return (
       
-    <View style={styles.container}>
+    <View style={styles.container}>          
         <View style={styles.row}> 
           <View style={styles.col}>
             <TouchableOpacity onPress={Actions.Rule}>
@@ -91,7 +92,6 @@ export default class Home extends Component {
             </TouchableOpacity>
           </View>
         </View> 
-
     </View>
       
     )

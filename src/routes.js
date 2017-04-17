@@ -24,6 +24,7 @@ import Search from './Search'
 import Login from './Login'
 import BarcodeLogin from './BarcodeLogin'
 import Profile from './Profile'
+import News from './News'
 //import Delivery from './Delivery'
 import Delivery from './delivery/index'
 //import Interlibloan from './Interlibloan'
@@ -53,6 +54,7 @@ const RouterComponent = () => {
 				<Scene key='Login' component={Login} title='Login' />
 					<Scene key='BarcodeLogin' component={BarcodeLogin} title='BarcodeLogin' />
 					<Scene key='Profile' component={Profile} title='Profile' />
+				<Scene key='News' component={News} title='News' />
 			</Router>
 		)
 }

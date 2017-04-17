@@ -58,7 +58,7 @@ export default class Home extends Component {
           </View>
 
           <View style={styles.col}>
-            <TouchableOpacity onPress={Actions.Reserve}>
+            <TouchableOpacity onPress={Actions.News}>
                 <Image style={styles.img}
                   source={require('./img/reserve.png')}
                 />

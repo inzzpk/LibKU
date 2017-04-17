@@ -20,8 +20,8 @@ export default class news extends Component {
 
   renderNews() {
     return this.state.news.map((news,index) =>
-      <Card >
-      <CardItem style={{marginTop: 20, marginBottom: 20}} key={index} onPress={() => Linking.openURL(news.link)}>
+      <Card key={index}>
+      <CardItem cardBody onPress={() => Linking.openURL(news.link)}>
           <Text key={news.title} style={{fontWeight: 'bold' ,marginLeft: 10, marginRight: 10,marginBottom: 10}}>{news.title}</Text>
                                   
             <Image style={{ resizeMode: 'cover', width: null }} source={{uri: news.image}} /> 

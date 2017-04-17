@@ -1,6 +1,6 @@
 
 import React ,{Component} from 'react'
-import {View , Text} from 'react-native'
+import {View , Text, Linking} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { Container, Content, List, ListItem, Thumbnail, H3 } from 'native-base';
 import axios from 'axios';
@@ -10,17 +10,7 @@ export default class test extends Component {
     state = { books: [] }
 
     componentWillMount() {
-    //axios.get('http://inzzpk.in.th/book_info.json')
-    //axios.get('http://localhost:8888/book_info.json')
-    // axios.get('http://158.108.48.254/brequest/book_info.json')
-    //axios.get('http://158.108.48.254/brequest/bookinfo.php')
-    //  .then(response => this.setState({ books: response.data }));
-    //.then(response => console.log(response.data))
-    //axios.get('https://rallycoding.herokuapp.com/api/music_albums')
-      // .then(response => this.setState({ books: response.data }));
-    // axios.get('https://rallycoding.herokuapp.com/api/music_albums')
 
-    //axios.get(`http://158.108.48.254/brequest/book_info.json`)
 
     axios.get(`http://localhost:8888/Laravel-LibKU/public/api/bookinfos`)
       .then(res => this.setState({ books: res.data }))
@@ -31,7 +21,7 @@ export default class test extends Component {
 
   renderBooks() {
     return this.state.books.map((book,index) =>
-      <ListItem key={index}>
+      <ListItem key={index} onPress={() => Linking.openURL(book.link)}>
           <Thumbnail square size={100} source={{uri: book.image}} />
           <Text key={book.title} style={{fontWeight: 'bold'}}>{book.title}</Text>
           <Text key={book.callno}>{book.callno}</Text>

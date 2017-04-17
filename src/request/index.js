@@ -1,20 +1,22 @@
 import React ,{Component} from 'react'
 import {View , Text , StyleSheet ,TouchableHighlight ,Image} from 'react-native'
 import {Actions} from 'react-native-router-flux'
+import { connect } from 'react-redux'
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Button, Picker } from 'native-base'
 
 const Item = Picker.Item;
 
-export default class index extends Component{
+class index extends Component{
 
 	 constructor(props) {
         super(props);
         this.state = {
-            selectedItem: undefined,
-            selected1: 'key0',
-            results: {
-                items: []
-            }
+            selected1: 'หนังสือภาษาไทย',
+            title:'',
+            author:'',
+            isbn:'',
+            publishers:'',
+            r_name: this.props.profile.th_name.toString()
         }
     }
     onValueChange (value: string) {
@@ -22,6 +24,21 @@ export default class index extends Component{
             selected1 : value
         });
     }
+
+    sentForm() {
+        console.log(this.state.title)
+        console.log(this.state.author)
+        console.log(this.state.selected1)
+        console.log(this.state.isbn)
+        console.log(this.state.publishers)
+        console.log(this.state.r_name)
+    // axios.get(`http://localhost:7777/chkLogin/${this.state.email}/${this.state.password}`)
+    //   .then(res => 
+    //         console.log(res.data[0].th_name)
+        
+    //   .catch(err => console.log(err))
+    }
+
 
 
 
@@ -43,38 +60,38 @@ export default class index extends Component{
                 mode="dropdown"
                 selectedValue={this.state.selected1}
                 onValueChange={this.onValueChange.bind(this)}>
-                <Item label="หนังสือภาษาไทย (Thai Books)" value="key0" />
-                <Item label="หนังสือภาษาต่างประเทศ (Foreign books)" value="key1" />
-                <Item label="วารสารภาษาไทย (Thai Journals)" value="key2" />
-                <Item label="วารสารภาษาต่างประเทศ (Foreign Journals)" value="key3" />
-                <Item label="โสตทัศนวัสดุ (audiovisuals)" value="key4" />
+                <Item label="หนังสือภาษาไทย (Thai Books)" value="หนังสือภาษาไทย" />
+                <Item label="หนังสือภาษาต่างประเทศ (Foreign books)" value="หนังสือภาษาต่างประเทศ" />
+                <Item label="วารสารภาษาไทย (Thai Journals)" value="วารสารภาษาไทย" />
+                <Item label="วารสารภาษาต่างประเทศ (Foreign Journals)" value="วารสารภาษาต่างประเทศ" />
+                <Item label="โสตทัศนวัสดุ (audiovisuals)" value="โสตทัศนวัสดุ" />
               </Picker>
           	</ListItem>
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='ชื่อเรื่อง (Title)' />
+                <Input placeholder='ชื่อเรื่อง (Title)' value={this.state.title} onChangeText={(title) => this.setState({title})}/>
               </InputGroup>
             </ListItem>
                     
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='ชื่อผู้แต่ง (Author)' />
+                <Input placeholder='ชื่อผู้แต่ง (Author)' value={this.state.author} onChangeText={(author) => this.setState({author})}/>
               </InputGroup>
             </ListItem>
                     
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='ISBN / ISSN (ถ้ามี)' />
+                <Input placeholder='ISBN / ISSN (ถ้ามี)' value={this.state.isbn} onChangeText={(isbn) => this.setState({isbn})}/>
               </InputGroup>
             </ListItem>
 
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='สำนักพิมพ์ (Publishers)' />
+                <Input placeholder='สำนักพิมพ์ (Publishers)' value={this.state.publishers} onChangeText={(publishers) => this.setState({publishers})}/>
               </InputGroup>
             </ListItem>
           </List>
-          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}> ส่ง </Button>
+          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }} onPress={()=> this.sentForm() }> ส่ง </Button>
         </Content>
       </Container>
 		)
@@ -102,3 +119,17 @@ const styles = StyleSheet.create({
   
 
 })
+
+
+const mapStateToProps = (state) => ({
+  profile: state.profile.val[0]
+})
+
+const mapDispatchToProps = (dispatch) => ({
+
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(index)

@@ -22,7 +22,7 @@ class index extends Component {
       <Container>
         <Content>
 			<List dataArray={this.props.dbsInfo} renderRow={(data) =>
-				<ListItem ListItem key={data.id} 
+				<ListItem key={data.id} 
 							onPress={() => Actions.DBInfo({id:data.id , name:data.name , 
 							link:data.link , intro:data.intro , url_pic:data.url_pic})} >
 					<Text>{data.name}</Text>

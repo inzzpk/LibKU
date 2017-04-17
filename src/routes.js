@@ -23,6 +23,7 @@ import Reserve from './Reserve'
 import Search from './Search'
 import Login from './Login'
 import BarcodeLogin from './BarcodeLogin'
+import Profile from './Profile'
 //import Delivery from './Delivery'
 import Delivery from './delivery/index'
 //import Interlibloan from './Interlibloan'
@@ -50,6 +51,7 @@ const RouterComponent = () => {
 				<Scene key='Delivery' component={Delivery} title='นำส่งหนังสือ / บทความ' />
 				<Scene key='Interlibloan' component={Login} title='ยืม / ถ่ายสำเนา ระหว่างห้องสมุด' />
 					<Scene key='BarcodeLogin' component={BarcodeLogin} title='BarcodeLogin' />
+					<Scene key='Profile' component={Profile} title='Profile' />
 			</Router>
 		)
 }

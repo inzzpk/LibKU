@@ -16,10 +16,12 @@ const requestFailure = (err) => ({
 
 
 
-export default () => dispatch => {
+export function testAction(user,password) {
+	console.log(user)
+	return (dispatch) => { 
 	dispatch(requestStart())
 	//axios.get('https://jsonplaceholder.typicode.com/posts')
-	axios.get('http://localhost:8888/Back-LibKU/public/api/dbsinfos')
+	axios.get(`http://localhost:7777/chkLogin/${user}/${password}`)
 		.then((res) => {
 			dispatch(requestSuccess(res))
 			console.log(res)
@@ -27,4 +29,6 @@ export default () => dispatch => {
 		.catch((err) => {
 			dispatch(requestFailure(err))
 		})
+
+	}
 }

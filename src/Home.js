@@ -91,6 +91,9 @@ export default class Home extends Component {
               />
             </TouchableOpacity>
           </View>
+          <TouchableOpacity onPress={Actions.Profile}>
+              <Text>Eeieie</Text>
+            </TouchableOpacity>
         </View> 
     </View>
       

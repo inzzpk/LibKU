@@ -4,17 +4,19 @@ import {View ,Image ,StyleSheet ,TouchableHighlight ,Form} from 'react-native'
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Text, Picker, Button } from 'native-base';
 import axios from 'axios';
 import {Actions} from 'react-native-router-flux'
+import { connect } from 'react-redux'
+import * as actions from './actions'
+
+const { testAction } = actions
 
 
-const Item = Picker.Item;
-
-export default class About extends Component {
+class About extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            password: '',
+            email: '5610503922',
+            password: '20056105039224',
             name: ''
         };
     }
@@ -22,20 +24,8 @@ export default class About extends Component {
     login() {
         console.log(this.state.email)
         console.log(this.state.password)
-    axios.get(`http://localhost:7777/chkLogin/${this.state.email}/${this.state.password}`)
-      .then(res => {
-        if (res.data[0] === undefined){
-            console.log("NOOOOO")
-            this.setState({ name: "ไม่ถูกต้มมมม" })
-        }
-        else{
-            console.log(res.data[0].th_name)
-            this.setState({ name: res.data[0].th_name })
-        }
-        })
-            //(res) => 
-        
-      .catch(err => console.log(err))
+        this.props.testAction(this.state.email,
+                        this.state.password)
     }
 
 
@@ -61,7 +51,7 @@ export default class About extends Component {
 
                     </List>
                     <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
-                    onPress={this.login.bind(this)}>
+                    onPress={()=> this.login() }>
                         เข้าสู่ระบบ
                     </Button>
                     <Text>{this.state.name}</Text>
@@ -75,6 +65,22 @@ export default class About extends Component {
         );
     }
 }
+
+
+
+const mapStateToProps = (state) => ({
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  testAction(user,password){
+    dispatch(testAction(user,password))
+  }
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(About)
 
 
 

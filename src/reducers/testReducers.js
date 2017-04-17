@@ -14,13 +14,13 @@
 // 	}
 // }
 
-export const fetchDbsInfo = (state = {
+export const testReducers = (state = {
 	isFetching : false,
-	value : {}
+	val : {}
 }, action) =>{
 	switch(action.type) {
 		case 'LOAD_TEST_REQUEST':
-			return {
+		return {
 				...state,
 				isfetching : false
 			}

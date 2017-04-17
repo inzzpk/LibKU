@@ -1,2 +1,2 @@
-export testAction from './testAction'
+export { testAction } from './testAction'
 export { fetchDbsInfo } from './fetchDbsInfos'

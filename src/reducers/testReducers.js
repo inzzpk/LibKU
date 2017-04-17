@@ -27,7 +27,7 @@ export const testReducers = (state = {
 		case 'LOAD_TEST_SUCCESS':
 			return {
 				...state,
-				value: action.payload,
+				val: action.payload,
 				isfetching : false
 			}
 		default:

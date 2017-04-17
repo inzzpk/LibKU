@@ -22,10 +22,7 @@ class About extends Component {
     }
 
     login() {
-        console.log(this.state.email)
-        console.log(this.state.password)
-        this.props.testAction(this.state.email,
-                        this.state.password)
+        this.props.testAction(this.state.email, this.state.password)
     }
 
 

@@ -4,7 +4,7 @@ var window = Dimensions.get('window');
 import React ,{Component} from 'react'
 import {View ,Image ,StyleSheet ,TouchableOpacity} from 'react-native'
 import {Actions} from 'react-native-router-flux'
-import { Container, Content, List, ListItem, Text, Thumbnail } from 'native-base'
+import { Container, Content, List, ListItem, Text, Thumbnail,Button } from 'native-base'
 import ImageSlider from 'react-native-image-slider';
 
 
@@ -84,17 +84,13 @@ export default class Home extends Component {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.col}>
-            <TouchableOpacity onPress={Actions.Interlibloan}>
-              <Image style={styles.img}
-                source={require('./img/interloan.png')}
-              />
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity onPress={Actions.Profile}>
-              <Text>Eeieie</Text>
-            </TouchableOpacity>
+
+          
         </View> 
+        <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
+              onPress={Actions.Login}>
+                        เข้าสู่ระบบ
+          </Button>
     </View>
       
     )

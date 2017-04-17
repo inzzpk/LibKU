@@ -11,10 +11,12 @@ class profile extends Component {
 
 
   render() {
+    
     return (
       <Container>
         <Content>
-          <Text>{this.props.profile.toString()}</Text>
+          <Text>{this.props.profile[0].th_name.toString()}</Text>
+          
         </Content>
       </Container>
     );

@@ -49,7 +49,8 @@ const RouterComponent = () => {
 				<Scene key='Reserve' component={Reserve} title='จองใช้ทรัพยากร' />
 				<Scene key='Search' component={Search} title='สืบค้นทรัพยากร' />
 				<Scene key='Delivery' component={Delivery} title='นำส่งหนังสือ / บทความ' />
-				<Scene key='Interlibloan' component={Login} title='ยืม / ถ่ายสำเนา ระหว่างห้องสมุด' />
+				<Scene key='Interlibloan' component={Interlibloan} title='ยืม / ถ่ายสำเนา ระหว่างห้องสมุด' />
+				<Scene key='Login' component={Login} title='Login' />
 					<Scene key='BarcodeLogin' component={BarcodeLogin} title='BarcodeLogin' />
 					<Scene key='Profile' component={Profile} title='Profile' />
 			</Router>

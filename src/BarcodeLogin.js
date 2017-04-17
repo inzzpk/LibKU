@@ -11,7 +11,7 @@ import {
 import Camera from 'react-native-camera';
 import axios from 'axios';
 
-export default class Barcode extends Component {
+export default class BarcodeLogin extends Component {
 
   constructor(props) {
     super(props);
@@ -23,9 +23,9 @@ export default class Barcode extends Component {
 
     login() {
       console.log(this.state.barcode_number)
-      axios.get(`http://192.168.1.7:7777/byBarcode/${this.state.barcode_number}`)
-      .then(res => {console.log(res.data[0].title)
-        this.setState({ name: res.data[0].title })
+      axios.get(`http://192.168.1.7:7777/LoginbyBarcode/${this.state.barcode_number}`)
+      .then(res => {console.log(res.data[0].th_name)
+        this.setState({ name: res.data[0].th_name })
       })        
       .catch(err => console.log(err))
     

@@ -3,6 +3,9 @@ import {View , Text , StyleSheet ,TouchableHighlight ,Image} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Button, Picker } from 'native-base'
+import * as actions from '../actions'
+
+const { createRequest } = actions
 
 const Item = Picker.Item;
 
@@ -11,32 +14,53 @@ class index extends Component{
 	 constructor(props) {
         super(props);
         this.state = {
-            selected1: 'หนังสือภาษาไทย',
-            title:'',
-            author:'',
-            isbn:'',
-            publishers:'',
-            r_name: this.props.profile.th_name.toString()
+            r_title:'สวัสดี',
+            r_type: 'หนังสือภาษาไทย',
+            r_author:'เด็กดี',
+            r_isbn:'1212312121',
+            r_pub:'แจ่มใส',
+            r_name: this.props.profile.th_name.toString(),
+            r_mail: this.props.profile.mail.toString(),
+            r_tel: this.props.profile.phone.toString(),
+
         }
     }
+
+    componentWillMount() {
+        var res = this.props.profile.faculty.toString()
+        var split = res.split(".")
+        var len = (split.length-1).toString()
+        //console.log(len)
+        var split1 = split[len].split(" ")
+        //console.log(split1[0])
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if(dd<10){
+            dd='0'+dd;
+        } 
+        if(mm<10){
+            mm='0'+mm;
+        } 
+        var today = yyyy+'-'+mm+'-'+dd;
+        //console.log(today)
+        this.setState({
+            r_fac :split1[0],
+            r_year :yyyy+543,
+            r_date :today
+        });
+    }
+
     onValueChange (value: string) {
         this.setState({
-            selected1 : value
+            r_type :value
         });
     }
 
     sentForm() {
-        console.log(this.state.title)
-        console.log(this.state.author)
-        console.log(this.state.selected1)
-        console.log(this.state.isbn)
-        console.log(this.state.publishers)
-        console.log(this.state.r_name)
-    // axios.get(`http://localhost:7777/chkLogin/${this.state.email}/${this.state.password}`)
-    //   .then(res => 
-    //         console.log(res.data[0].th_name)
-        
-    //   .catch(err => console.log(err))
+        this.props.createRequest(this.state)
     }
 
 
@@ -58,7 +82,7 @@ class index extends Component{
           		<Picker
                 iosHeader="ประเภททรัพยากรสารสนเทศ"
                 mode="dropdown"
-                selectedValue={this.state.selected1}
+                selectedValue={this.state.r_type}
                 onValueChange={this.onValueChange.bind(this)}>
                 <Item label="หนังสือภาษาไทย (Thai Books)" value="หนังสือภาษาไทย" />
                 <Item label="หนังสือภาษาต่างประเทศ (Foreign books)" value="หนังสือภาษาต่างประเทศ" />
@@ -69,25 +93,25 @@ class index extends Component{
           	</ListItem>
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='ชื่อเรื่อง (Title)' value={this.state.title} onChangeText={(title) => this.setState({title})}/>
+                <Input placeholder='ชื่อเรื่อง (Title)' value={this.state.r_title} onChangeText={(r_title) => this.setState({r_title})}/>
               </InputGroup>
             </ListItem>
                     
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='ชื่อผู้แต่ง (Author)' value={this.state.author} onChangeText={(author) => this.setState({author})}/>
+                <Input placeholder='ชื่อผู้แต่ง (Author)' value={this.state.r_author} onChangeText={(r_author) => this.setState({r_author})}/>
               </InputGroup>
             </ListItem>
                     
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='ISBN / ISSN (ถ้ามี)' value={this.state.isbn} onChangeText={(isbn) => this.setState({isbn})}/>
+                <Input placeholder='ISBN / ISSN (ถ้ามี)' value={this.state.r_isbn} onChangeText={(r_isbn) => this.setState({r_isbn})}/>
               </InputGroup>
             </ListItem>
 
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='สำนักพิมพ์ (Publishers)' value={this.state.publishers} onChangeText={(publishers) => this.setState({publishers})}/>
+                <Input placeholder='สำนักพิมพ์ (Publishers)' value={this.state.r_pub} onChangeText={(r_pub) => this.setState({r_pub})}/>
               </InputGroup>
             </ListItem>
           </List>
@@ -126,7 +150,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+    createRequest(value){
+    dispatch(createRequest(value))
+  }
 })
 
 export default connect(

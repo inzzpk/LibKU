@@ -9,13 +9,23 @@ import { connect } from 'react-redux'
 
 class profile extends Component {
 
+    eiei () {
+        var res = this.props.profile[0].faculty.toString()
+        var split = res.split(".")
+        var len = (split.length-1).toString()
+        console.log(len)
+        var split1 = split[len].split(" ")
+        console.log(split1)
+
+    }
+
 
   render() {
     
     return (
       <Container>
         <Content>
-          <Text>{this.props.profile[0].th_name.toString()}</Text>
+          <Text>{this.eiei()}</Text>
           
         </Content>
       </Container>

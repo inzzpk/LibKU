@@ -22,6 +22,7 @@ class About extends Component {
     }
 
     login() {
+        console.log(this.state.email)
         this.props.testAction(this.state.email, this.state.password)
     }
 

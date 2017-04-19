@@ -14,11 +14,11 @@ class index extends Component{
 	 constructor(props) {
         super(props);
         this.state = {
-            r_title:'สวัสดี',
+            r_title:'',
             r_type: 'หนังสือภาษาไทย',
-            r_author:'เด็กดี',
-            r_isbn:'1212312121',
-            r_pub:'แจ่มใส',
+            r_author:'',
+            r_isbn:'',
+            r_pub:'',
             r_name: this.props.profile.th_name.toString(),
             r_mail: this.props.profile.mail.toString(),
             r_tel: this.props.profile.phone.toString(),

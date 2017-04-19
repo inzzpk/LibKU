@@ -3,12 +3,10 @@ import { combineReducers } from 'redux'
 //import {fetchDbsInfo} from './testReducers'
 import {fetchDbsInfo} from './fetchDbsInfo'
 import {testReducers} from './testReducers'
-import {createRequest} from './createRequest'
 
 
 export default combineReducers({
 	dbsInfo: fetchDbsInfo,
 	profile: testReducers,
-	req: createRequest
 })
 

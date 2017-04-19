@@ -10,8 +10,8 @@ import { connect } from 'react-redux'
 class profile extends Component {
 
     eiei () {
-        var res = this.props.profile[0].faculty.toString()
-        var split = res.split(".")
+        var res = this.props.profile[0].home_address.toString()
+        var split = res.split("จ.")
         var len = (split.length-1).toString()
         console.log(len)
         var split1 = split[len].split(" ")

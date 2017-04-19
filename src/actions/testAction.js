@@ -23,8 +23,8 @@ export function testAction(user,password) {
 	return (dispatch) => { 
 	dispatch(requestStart())
 	//axios.get('https://jsonplaceholder.typicode.com/posts')
-	//axios.get(`http://localhost:7777/chkLogin/${user}/${password}`)
-	axios.get(`http://158.108.143.240:7777/chkLogin/${user}/${password}`)
+	axios.get(`http://localhost:7777/chkLogin/${user}/${password}`)
+	//axios.get(`http://158.108.143.240:7777/chkLogin/${user}/${password}`)
 		.then((res) => {
 		if(res.data.length === 0)
 			console.log("ไม่ถูก")

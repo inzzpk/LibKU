@@ -1,15 +1,9 @@
 'use strict';
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View
-} from 'react-native';
+import { AppRegistry, Dimensions, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import Camera from 'react-native-camera';
 import axios from 'axios';
+import { API_END_POINT } from '../config'
 
 export default class Barcode extends Component {
 
@@ -24,7 +18,7 @@ export default class Barcode extends Component {
     login() {
       console.log(this.state.barcode_number)
       //axios.get(`http://192.168.1.7:7777/byBarcode/${this.state.barcode_number}`)
-      axios.get(`http://158.108.140.123:7777/byBarcode/${this.state.barcode_number}`)
+      axios.get(`${API_END_POINT}:7777/byBarcode/${this.state.barcode_number}`)
       .then(res => {console.log(res.data[0].title)
         this.setState({ name: res.data[0].title })
       })        

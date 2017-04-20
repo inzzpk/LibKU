@@ -46,10 +46,10 @@ class Article extends Component{
         var split1 = split[len].split(" ")
         this.state = {
           fac :split1[0],
-            name: this.props.profile.th_name.toString(),
-            email: this.props.profile.mail.toString(),
-            phone: this.props.profile.phone.toString(), 
-            barcode: this.props.profile.barcode.toString()
+          name: this.props.profile.th_name.toString(),
+          email: this.props.profile.mail.toString(),
+          phone: this.props.profile.phone.toString(), 
+          barcode: this.props.profile.barcode.toString()
       }
     }
         

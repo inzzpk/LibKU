@@ -1,9 +1,7 @@
-
 import React ,{Component} from 'react'
 import {View, Text, Image, Linking} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { Container, Content, Card, CardItem, Thumbnail, H3, Button } from 'native-base';
-import axios from 'axios';
 
 export default class test extends Component {
 

@@ -1,8 +1,9 @@
 import axios from 'axios'
+import { API_END_POINT } from '../config'
 
 export function createDeli(item) {
 	//let route = `http://localhost:7777/createDeli`
-	let route = `http://158.108.140.123:7777/createDeli`
+	let route = `${API_END_POINT}:7777/createDeli`
 	return (dispatch) => { 
 		// console.log(item)
 		axios.post(route,item)

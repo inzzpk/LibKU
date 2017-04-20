@@ -36,24 +36,22 @@ class Book extends Component{
     }
 
     componentWillMount() {
-                if(this.props.profile === undefined)
-      {
-        console.log("Nooo")
-      }else
-      {
-                var res = this.props.profile.faculty.toString()
-        var split = res.split(".")
-        var len = (split.length-1).toString()
-        //console.log(len)
-        var split1 = split[len].split(" ")
-        this.state = {
-            fac :split1[0],
-       name: this.props.profile.th_name.toString(),
-            email: this.props.profile.mail.toString(),
-            phone: this.props.profile.phone.toString(), 
-            barcode: this.props.profile.barcode.toString()
-      }
-    }
+        if(this.props.profile === undefined){
+            console.log("Nooo")
+        }else{
+            var res = this.props.profile.faculty.toString()
+            var split = res.split(".")
+            var len = (split.length-1).toString()
+            //console.log(len)
+            var split1 = split[len].split(" ")
+            this.state = {
+                fac :split1[0],
+                name: this.props.profile.th_name.toString(),
+                email: this.props.profile.mail.toString(),
+                phone: this.props.profile.phone.toString(), 
+                barcode: this.props.profile.barcode.toString()
+            }
+        }
 
         var today = new Date();
         var dd = today.getDate();

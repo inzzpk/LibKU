@@ -1,9 +1,9 @@
-
 import React ,{Component} from 'react'
 import {View , Text, Linking} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { Container, Content, Card, CardItem, Thumbnail, H3 } from 'native-base';
 import axios from 'axios';
+import { API_END_POINT } from '../config'
 
 export default class test extends Component {
 
@@ -13,7 +13,7 @@ export default class test extends Component {
 
 
     //axios.get(`http://localhost:8888/Laravel-LibKU/public/api/bookinfos`)
-    axios.get(`http://158.108.140.123:8888/Laravel-LibKU/public/api/bookinfos`)
+    axios.get(`${API_END_POINT}:8888/Laravel-LibKU/public/api/bookinfos`)
       .then(res => this.setState({ books: res.data }))
       .catch(err => console.log(err))
       // .then(response => this.setState({ albums: response.data }));

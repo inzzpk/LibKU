@@ -4,6 +4,7 @@ import {Actions} from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Button, Picker } from 'native-base'
 import * as actions from './actions'
+import Modal from 'react-native-modalbox';
 
 const { createRecom } = actions
 
@@ -14,9 +15,9 @@ class Comment extends Component{
    constructor(props) {
         super(props);
         this.state = {
-            r_name: this.props.profile.th_name.toString(),
-            r_mail: this.props.profile.mail.toString(),
-            r_tel: this.props.profile.phone.toString(), 
+            // r_name: this.props.profile.th_name.toString(),
+            // r_mail: this.props.profile.mail.toString(),
+            // r_tel: this.props.profile.phone.toString(), 
             r_b: 'ช่วงเกษตรศิลปการ', 
             r_z: 'ชั้น 1', 
             r_rec: ''
@@ -25,6 +26,17 @@ class Comment extends Component{
     }
 
     componentWillMount() {
+      if(this.props.profile === undefined)
+      {
+        console.log("Nooo")
+      }else
+      {
+        this.state = {
+        r_name: this.props.profile.th_name.toString(),
+        r_mail: this.props.profile.mail.toString(),
+        r_tel: this.props.profile.phone.toString() 
+      }
+      }
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth()+1; 
@@ -59,9 +71,6 @@ class Comment extends Component{
     sentForm() {
         this.props.createRecom(this.state)
     }
-
-
-
 
   render(){
     return(
@@ -150,75 +159,3 @@ export default connect(
     mapDispatchToProps
 )(Comment)
 
-/*
-import React ,{Component} from 'react'
-import {View , Text , StyleSheet} from 'react-native'
-import {Actions} from 'react-native-router-flux'
-import { Container, Content, List, ListItem, InputGroup, Input, Icon, Button } from 'native-base';
-
-export default class Comment extends Component{
-
-	render(){
-		return(
-			 <Container>
-        <Content padder>
-          <List>
-            <ListItem>
-              <InputGroup style={styles.box}>
-                <Input placeholder='ชื่อ-นามสกุล' />
-              </InputGroup>
-            </ListItem>
-                    
-            <ListItem>
-              <InputGroup style={styles.box}>
-                <Input placeholder='หมายเลขโทรศัพท์' />
-              </InputGroup>
-            </ListItem>
-                    
-            <ListItem>
-              <InputGroup style={styles.box}>
-                <Input placeholder='E-mail' />
-              </InputGroup>
-            </ListItem>
-
-            <ListItem>
-              <InputGroup style={styles.box}>
-                <Input placeholder='วันที่ใช้บริการ' />
-              </InputGroup>
-            </ListItem>
-                   
-            <ListItem>
-              <InputGroup style={styles.box}>
-                <Input stackedLabel label='ข้อเสนอแนะ / ร้องเรียน' placeholder='พิมตรงนี้' />
-                  </InputGroup>
-            </ListItem>
-          </List>
-          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}> ส่ง </Button>
-        </Content>
-      </Container>
-		)
-	}
-}
-const styles = StyleSheet.create({
-  container: {
-    marginLeft: 5,
-    marginRight: 5,
-    marginTop: 10
-  },
-  box:{
-    marginLeft: 5,
-    marginRight: 25,
-    marginTop: 10,
-    
-  },
-  b:{
-    marginTop: 10,
-    marginLeft: 160,
-    justifyContent: 'center',
-    alignItems: 'center',
-    
-  }
-  
-
-})
-*/

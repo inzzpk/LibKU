@@ -12,7 +12,8 @@ export default class test extends Component {
     componentWillMount() {
 
 
-    axios.get(`http://localhost:8888/Laravel-LibKU/public/api/bookinfos`)
+    //axios.get(`http://localhost:8888/Laravel-LibKU/public/api/bookinfos`)
+    axios.get(`http://158.108.140.123:8888/Laravel-LibKU/public/api/bookinfos`)
       .then(res => this.setState({ books: res.data }))
       .catch(err => console.log(err))
       // .then(response => this.setState({ albums: response.data }));

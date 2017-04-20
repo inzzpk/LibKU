@@ -18,20 +18,33 @@ class index extends Component{
             r_type: 'หนังสือภาษาไทย',
             r_author:'',
             r_isbn:'',
-            r_pub:'',
-            r_name: this.props.profile.th_name.toString(),
-            r_mail: this.props.profile.mail.toString(),
-            r_tel: this.props.profile.phone.toString(),
+            r_pub:''
+            // r_name: this.props.profile.th_name.toString(),
+            // r_mail: this.props.profile.mail.toString(),
+            // r_tel: this.props.profile.phone.toString(),
 
         }
     }
 
     componentWillMount() {
-        var res = this.props.profile.faculty.toString()
+        if(this.props.profile === undefined)
+      {
+        console.log("Nooo")
+      }else
+      {var res = this.props.profile.faculty.toString()
         var split = res.split(".")
         var len = (split.length-1).toString()
         //console.log(len)
         var split1 = split[len].split(" ")
+        this.state = {
+          r_fac :split1[0],
+        r_name: this.props.profile.th_name.toString(),
+        r_mail: this.props.profile.mail.toString(),
+        r_tel: this.props.profile.phone.toString() 
+      }
+
+    }
+        
         //console.log(split1[0])
         var today = new Date();
         var dd = today.getDate();
@@ -47,7 +60,6 @@ class index extends Component{
         var today = yyyy+'-'+mm+'-'+dd;
         //console.log(today)
         this.setState({
-            r_fac :split1[0],
             r_year :yyyy+543,
             r_date :today
         });

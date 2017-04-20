@@ -25,7 +25,7 @@ class profile extends Component {
     return (
       <Container>
         <Content>
-          <Text>{this.eiei()}</Text>
+          <Text>สวัสดี {this.props.profile[0].th_name.toString()}</Text>
           
         </Content>
       </Container>

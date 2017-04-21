@@ -12,7 +12,8 @@ export default class news extends Component {
     componentWillMount() {
 
     //axios.get(`http://localhost:8888/Laravel-LibKU/public/api/news`)
-    axios.get(`${API_END_POINT}:8888/Laravel-LibKU/public/api/news`)
+    //axios.get(`${API_END_POINT}:8888/Laravel-LibKU/public/api/news`)
+    axios.get(`${API_END_POINT}:7777/fetchNews`)
       .then(res => this.setState({ news: res.data }))
       .catch(err => console.log(err))
       // .then(response => this.setState({ albums: response.data }));

@@ -13,7 +13,8 @@ export default class test extends Component {
 
 
     //axios.get(`http://localhost:8888/Laravel-LibKU/public/api/bookinfos`)
-    axios.get(`${API_END_POINT}:8888/Laravel-LibKU/public/api/bookinfos`)
+    //axios.get(`${API_END_POINT}:8888/Laravel-LibKU/public/api/bookinfos`)
+    axios.get(`${API_END_POINT}:7777/fetchIntros`)
       .then(res => this.setState({ books: res.data }))
       .catch(err => console.log(err))
       // .then(response => this.setState({ albums: response.data }));

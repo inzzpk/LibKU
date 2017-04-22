@@ -1,11 +1,14 @@
-'use strict';
 import React, { Component } from 'react';
 import { AppRegistry, Dimensions, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import Camera from 'react-native-camera';
 import axios from 'axios';
 import { API_END_POINT } from '../config'
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 
-export default class Barcode extends Component {
+const { fetchByBarcode } = actions
+
+class Barcode extends Component {
 
   constructor(props) {
     super(props);
@@ -15,15 +18,10 @@ export default class Barcode extends Component {
     };
   }
 
-    login() {
+  
+  getinfo() {
       console.log(this.state.barcode_number)
-      //axios.get(`http://192.168.1.7:7777/byBarcode/${this.state.barcode_number}`)
-      axios.get(`${API_END_POINT}/byBarcode/${this.state.barcode_number}`)
-      .then(res => {console.log(res.data[0].title)
-        this.setState({ name: res.data[0].title })
-      })        
-      .catch(err => console.log(err))
-    
+      this.props.fetchByBarcode(this.state.barcode_number)
   }
 
 
@@ -38,7 +36,7 @@ export default class Barcode extends Component {
           onBarCodeRead = {(obj)=>this.setState({barcode_number:obj.data})}
           ref={(cam) => {this.camera = cam;}}
           >
-          <TouchableHighlight onPress={this.login.bind(this)}><Text style={styles.capture}>{this.state.barcode_number}</Text>
+          <TouchableHighlight onPress={this.getinfo.bind(this)}><Text style={styles.capture}>{this.state.barcode_number}</Text>
           </TouchableHighlight>
           <Text>{this.state.name}</Text>
         </Camera>
@@ -73,3 +71,18 @@ const styles = StyleSheet.create({
     margin: 40
   }
 });
+
+
+const mapStateToProps = (state) => ({
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchByBarcode(barcode){
+    dispatch(fetchByBarcode(barcode))
+  }
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Barcode)

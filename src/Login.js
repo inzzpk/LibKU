@@ -7,7 +7,7 @@ import {Actions} from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import * as actions from './actions'
 
-const { testAction } = actions
+const { fetchProfile } = actions
 
 
 class About extends Component {
@@ -23,7 +23,7 @@ class About extends Component {
 
     login() {
         console.log(this.state.email)
-        this.props.testAction(this.state.email, this.state.password)
+        this.props.fetchProfile(this.state.email, this.state.password)
     }
 
 
@@ -70,8 +70,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  testAction(user,password){
-    dispatch(testAction(user,password))
+  fetchProfile(user,password){
+    dispatch(fetchProfile(user,password))
   }
 })
 

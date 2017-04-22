@@ -14,65 +14,89 @@ class index extends Component{
 	 constructor(props) {
         super(props);
         this.state = {
-            r_title:'',
+            r_title: this.props.bookInfo?this.props.bookInfo.title.toString():'',
             r_type: 'หนังสือภาษาไทย',
-            r_author:'',
-            r_isbn:'',
-            r_pub:''
-            // r_name: this.props.profile.th_name.toString(),
-            // r_mail: this.props.profile.mail.toString(),
-            // r_tel: this.props.profile.phone.toString(),
-
+            r_author: this.props.bookInfo?this.props.bookInfo.author.toString():'',
+            r_isbn: this.props.bookInfo?this.props.bookInfo.isbn.toString():'',
+            r_pub: this.props.bookInfo?this.props.bookInfo.pbulish2.toString():'',
+            r_name: this.props.profile?this.props.profile.th_name.toString():'',
+            r_mail: this.props.profile?this.props.profile.mail.toString():'',
+            r_tel: this.props.profile?this.props.profile.phone.toString():''
+            // r_fac: '',
+            // r_year: '',
+            // r_date: ''
         }
     }
 
-    componentWillMount() {
-        if(this.props.profile === undefined)
-      {
-        console.log("Nooo")
-      }else
-      {var res = this.props.profile.faculty.toString()
-        var split = res.split(".")
-        var len = (split.length-1).toString()
-        //console.log(len)
-        var split1 = split[len].split(" ")
-        this.state = {
-          r_fac :split1[0],
-        r_name: this.props.profile.th_name.toString(),
-        r_mail: this.props.profile.mail.toString(),
-        r_tel: this.props.profile.phone.toString() 
-      }
+    // componentWillReceiveProps (nextProps) {
 
-    }
-        
-        //console.log(split1[0])
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
+    // if (nextProps === this.props) {
+    //     return console.log("eiei");
+    // }else return console.log(nextProps.bookInfo.title);
 
-        var yyyy = today.getFullYear();
-        if(dd<10){
-            dd='0'+dd;
-        } 
-        if(mm<10){
-            mm='0'+mm;
-        } 
-        var today = yyyy+'-'+mm+'-'+dd;
-        //console.log(today)
-        this.setState({
+
+    // this.setState({
+    //   r_title: nextProps.bookInfo.title.toString(),
+    //   r_type: 'หนังสือภาษาไทย',
+    //   r_author: nextProps.bookInfo.author,
+    //   r_isbn: nextProps.bookInfo.isbn,
+    //   r_pub: nextProps.bookInfo.pbulish2,
+    // });
+
+    // }
+
+   getProfileInfo() {
+      if(this.props.profile === undefined)
+        { console.log("Nooo")}
+      else
+        {        
+          //console.log(this.state.r_title)
+          var res = this.props.profile.faculty.toString()
+          var split = res.split(".")
+          var len = (split.length-1).toString()
+            //console.log(len)
+          var split1 = split[len].split(" ")
+          var today = new Date();
+          var dd = today.getDate();
+          var mm = today.getMonth()+1; //January is 0!
+
+          var yyyy = today.getFullYear();
+          if(dd<10){
+              dd='0'+dd;
+          } 
+          if(mm<10){
+              mm='0'+mm;
+          } 
+          var today = yyyy+'-'+mm+'-'+dd;
+          this.state = {
+            ...this.state,
+            r_fac :split1[0],
             r_year :yyyy+543,
             r_date :today
-        });
-    }
+            // r_name: this.props.profile.th_name.toString(),
+            // r_mail: this.props.profile.mail.toString(),
+            // r_tel: this.props.profile.phone.toString() 
+          }
+        }
+        
+        
+   }
 
     onValueChange (value: string) {
         this.setState({
-            r_type :value
+          r_type :value
         });
     }
 
     sentForm() {
-        this.props.createRequest(this.state)
+      //this.getProfileInfo()
+      // this.setState({
+      //   r_name: this.props.profile?this.props.profile.th_name.toString():'',
+      //   r_mail: this.props.profile?this.props.profile.mail.toString():'',
+      //   r_tel: this.props.profile?this.props.profile.phone.toString():''
+      // })
+      console.log(this.state)
+      //this.props.createRequest(this.state)
     }
 
 
@@ -158,7 +182,8 @@ const styles = StyleSheet.create({
 
 
 const mapStateToProps = (state) => ({
-  profile: state.profile.val[0]
+  profile: state.profile.val[0],
+  bookInfo: state.bookInfo.valu[0]
 })
 
 const mapDispatchToProps = (dispatch) => ({

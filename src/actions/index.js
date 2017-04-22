@@ -1,5 +1,7 @@
 export { testAction } from './testAction'
 export { fetchDbsInfo } from './fetchDbsInfos'
+export { fetchProfile } from './fetchProfile'
+export { fetchByBarcode } from './fetchByBarcode'
 export { createRequest } from './createRequest'
 export { createRecom } from './createRecom'
 export { createDeli } from './createDeli'

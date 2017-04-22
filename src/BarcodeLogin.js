@@ -17,7 +17,7 @@ export default class BarcodeLogin extends Component {
 
     login() {
       console.log(this.state.barcode_number)
-      axios.get(`${API_END_POINT}:7777/LoginbyBarcode/${this.state.barcode_number}`)
+      axios.get(`${API_END_POINT}/LoginbyBarcode/${this.state.barcode_number}`)
       .then(res => {console.log(res.data[0].th_name)
         this.setState({ name: res.data[0].th_name })
       })        

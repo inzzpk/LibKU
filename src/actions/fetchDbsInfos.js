@@ -21,7 +21,7 @@ export function fetchDbsInfo() {
 	return (dispatch) => { 
 	dispatch(requestFetchDbsInfo())
 	//axios.get('http://localhost:8888/Laravel-LibKU/public/api/dbsinfos')
-	axios.get(`${API_END_POINT}:7777/fetchDbs`)
+	axios.get(`${API_END_POINT}/fetchDbs`)
 		.then((res) => {
 			dispatch(requestFetchDbsInfoSuccess(res))
 			console.log(res)

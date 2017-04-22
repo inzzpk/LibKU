@@ -3,7 +3,7 @@ import { API_END_POINT } from '../config'
 
 export function createRecom(item) {
 	//let route = `http://localhost:7777/createRecom`
-	let route = `${API_END_POINT}:7777/createRecom`
+	let route = `${API_END_POINT}/createRecom`
 	return (dispatch) => { 
 		// console.log(item)
 		axios.post(route,item)

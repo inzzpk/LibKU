@@ -25,7 +25,7 @@ export function testAction(user,password) {
 	dispatch(requestStart())
 	//axios.get('https://jsonplaceholder.typicode.com/posts')
 	//axios.get(`http://localhost:7777/chkLogin/${user}/${password}`)
-	axios.get(`${API_END_POINT}:7777/chkLogin/${user}/${password}`)
+	axios.get(`${API_END_POINT}/chkLogin/${user}/${password}`)
 		.then((res) => {
 		if(res.data.length === 0)
 			console.log("ไม่ถูก")

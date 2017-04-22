@@ -28,22 +28,23 @@ class index extends Component{
         }
     }
 
-    // componentWillReceiveProps (nextProps) {
-
+    componentWillReceiveProps (nextProps) {
+      console.log('in receive props')
+      console.log(nextProps)
     // if (nextProps === this.props) {
     //     return console.log("eiei");
     // }else return console.log(nextProps.bookInfo.title);
 
 
-    // this.setState({
-    //   r_title: nextProps.bookInfo.title.toString(),
-    //   r_type: 'หนังสือภาษาไทย',
-    //   r_author: nextProps.bookInfo.author,
-    //   r_isbn: nextProps.bookInfo.isbn,
-    //   r_pub: nextProps.bookInfo.pbulish2,
-    // });
+    this.setState({
+      r_title: nextProps.bookInfo.title.toString(),
+      r_type: 'หนังสือภาษาไทย',
+      r_author: nextProps.bookInfo.author,
+      r_isbn: nextProps.bookInfo.isbn,
+      r_pub: nextProps.bookInfo.pbulish2,
+    });
 
-    // }
+    }
 
    getProfileInfo() {
       if(this.props.profile === undefined)
@@ -73,9 +74,6 @@ class index extends Component{
             r_fac :split1[0],
             r_year :yyyy+543,
             r_date :today
-            // r_name: this.props.profile.th_name.toString(),
-            // r_mail: this.props.profile.mail.toString(),
-            // r_tel: this.props.profile.phone.toString() 
           }
         }
         
@@ -89,14 +87,9 @@ class index extends Component{
     }
 
     sentForm() {
-      //this.getProfileInfo()
-      // this.setState({
-      //   r_name: this.props.profile?this.props.profile.th_name.toString():'',
-      //   r_mail: this.props.profile?this.props.profile.mail.toString():'',
-      //   r_tel: this.props.profile?this.props.profile.phone.toString():''
-      // })
+      this.getProfileInfo()
       console.log(this.state)
-      //this.props.createRequest(this.state)
+      this.props.createRequest(this.state)
     }
 
 

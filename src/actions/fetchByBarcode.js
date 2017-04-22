@@ -29,8 +29,8 @@ export function fetchByBarcode(barcode) {
 			console.log("ไม่ถูก")
 		else{
 			dispatch(requestByBarcodeSuccess(res))
-			//dispatch(Actions.pop)
-			dispatch(Actions.Request)
+			dispatch(Actions.pop)
+			//dispatch(Actions.Request)
 		//	console.log(res)
 		}
 		})

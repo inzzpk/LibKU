@@ -14,7 +14,7 @@ import Intro from './intro/index'
 import Comment from './Comment'
 //import Database from './Database'
 import Database from './database/index'
-import DBInfo from './database/test'
+import DBInfo from './database/Detail'
 //import Request from './Request'
 import Request from './request/index'
 import Barcode from './request/Barcode'
@@ -26,8 +26,6 @@ import Profile from './Profile'
 import News from './News'
 //import Delivery from './Delivery'
 import Delivery from './delivery/index'
-//import Interlibloan from './Interlibloan'
-import Interlibloan from './interlibloan/index'
 import testContainer from 'LibKU/src/containers/testContainer'
 
 const RouterComponent = () => {
@@ -49,7 +47,6 @@ const RouterComponent = () => {
 				<Scene key='Reserve' component={Reserve} title='จองใช้ทรัพยากร' />
 				<Scene key='Search' component={Search} title='สืบค้นทรัพยากร' />
 				<Scene key='Delivery' component={Delivery} title='นำส่งหนังสือ / บทความ' />
-				<Scene key='Interlibloan' component={Interlibloan} title='ยืม / ถ่ายสำเนา ระหว่างห้องสมุด' />
 				<Scene key='Login' component={Login} title='Login' />
 					<Scene key='BarcodeLogin' component={BarcodeLogin} title='BarcodeLogin' />
 					<Scene key='Profile' component={Profile} title='Profile' />

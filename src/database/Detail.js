@@ -3,11 +3,9 @@ import {View, Text, Image, Linking} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { Container, Content, Card, CardItem, Thumbnail, H3, Button } from 'native-base';
 
-export default class test extends Component {
+export default class Detail extends Component {
 
   render() {
-    console.log(this.props)
-    console.log(this.props.id)
     return (
           <Container>
             <Content padder>
@@ -29,6 +27,3 @@ export default class test extends Component {
   }
 }
 
-//<Image style={{height: 100 , resizeMode: 'contain' , alignSelf: 'center' , marginBottom: 20}}
-//source={{uri: this.props.url_pic }} /> 
-//source={require('../img/kulogo.png')} /> 

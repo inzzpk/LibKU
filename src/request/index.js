@@ -1,5 +1,5 @@
 import React ,{Component} from 'react'
-import {View , Text , StyleSheet ,TouchableHighlight ,Image} from 'react-native'
+import {View , Text , StyleSheet ,TouchableHighlight ,Image ,Alert} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Button, Picker } from 'native-base'
@@ -14,14 +14,14 @@ class index extends Component{
 	 constructor(props) {
         super(props);
         this.state = {
-            r_title: this.props.bookInfo?this.props.bookInfo.title.toString():'',
+            r_title: '',
             r_type: 'หนังสือภาษาไทย',
-            r_author: this.props.bookInfo?this.props.bookInfo.author.toString():'',
-            r_isbn: this.props.bookInfo?this.props.bookInfo.isbn.toString():'',
-            r_pub: this.props.bookInfo?this.props.bookInfo.pbulish2.toString():'',
-            r_name: this.props.profile?this.props.profile.th_name.toString():'',
-            r_mail: this.props.profile?this.props.profile.mail.toString():'',
-            r_tel: this.props.profile?this.props.profile.phone.toString():''
+            r_author: '',
+            r_isbn: '',
+            r_pub: '',
+            r_name: '',
+            r_mail: '',
+            r_tel: ''
             // r_fac: '',
             // r_year: '',
             // r_date: ''
@@ -29,28 +29,34 @@ class index extends Component{
     }
 
     componentWillReceiveProps (nextProps) {
-      console.log('in receive props')
-      console.log(nextProps)
-    // if (nextProps === this.props) {
-    //     return console.log("eiei");
-    // }else return console.log(nextProps.bookInfo.title);
 
-
-    this.setState({
-      r_title: nextProps.bookInfo.title.toString(),
-      r_type: 'หนังสือภาษาไทย',
-      r_author: nextProps.bookInfo.author,
-      r_isbn: nextProps.bookInfo.isbn,
-      r_pub: nextProps.bookInfo.pbulish2,
-    });
+      this.setState({
+        r_title: nextProps.bookInfo.title.toString(),
+        r_type: 'หนังสือภาษาไทย',
+        r_author: nextProps.bookInfo.author.toString(),
+        r_isbn: nextProps.bookInfo.isbn.toString(),
+        r_pub: nextProps.bookInfo.pbulish2.toString(),
+        r_name: nextProps.profile.th_name.toString(),
+        r_mail: nextProps.profile.mail.toString(),
+        r_tel: nextProps.profile.phone.toString()
+      });
 
     }
 
-   getProfileInfo() {
+    componentWillMount() {
       if(this.props.profile === undefined)
-        { console.log("Nooo")}
-      else
-        {        
+      {
+        Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
+              {text: 'ตกลง', onPress: () => {Actions.Login()}},
+            ])
+      }
+    }
+
+   getProfileInfo() {
+      if(this.props.profile === undefined){
+        console.log("nooo")
+      }else
+      {        
           //console.log(this.state.r_title)
           var res = this.props.profile.faculty.toString()
           var split = res.split(".")
@@ -86,10 +92,11 @@ class index extends Component{
         });
     }
 
-    sentForm() {
+    sentForm() { 
       this.getProfileInfo()
       console.log(this.state)
-      this.props.createRequest(this.state)
+      //this.props.createRequest(this.state)
+      alert("success")
     }
 
 

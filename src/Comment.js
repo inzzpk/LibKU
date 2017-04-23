@@ -1,5 +1,5 @@
 import React ,{Component} from 'react'
-import {View , Text , StyleSheet ,TouchableHighlight ,Image} from 'react-native'
+import {View , Text , StyleSheet ,TouchableHighlight ,Image ,Alert} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import { Container, Content, List, ListItem, InputGroup, Input, Icon, Button, Picker } from 'native-base'
@@ -15,9 +15,9 @@ class Comment extends Component{
    constructor(props) {
         super(props);
         this.state = {
-            // r_name: this.props.profile.th_name.toString(),
-            // r_mail: this.props.profile.mail.toString(),
-            // r_tel: this.props.profile.phone.toString(), 
+            r_name: '',
+            r_mail: '',
+            r_tel: '' ,
             r_b: 'ช่วงเกษตรศิลปการ', 
             r_z: 'ชั้น 1', 
             r_rec: ''
@@ -25,18 +25,24 @@ class Comment extends Component{
         }
     }
 
+    componentWillReceiveProps (nextProps) {
+
+      this.setState({
+        r_name: nextProps.profile.th_name.toString(),
+        r_mail: nextProps.profile.mail.toString(),
+        r_tel: nextProps.profile.phone.toString() 
+      })
+
+    }
+
     componentWillMount() {
       if(this.props.profile === undefined)
       {
-        console.log("Nooo")
-      }else
-      {
-        this.state = {
-        r_name: this.props.profile.th_name.toString(),
-        r_mail: this.props.profile.mail.toString(),
-        r_tel: this.props.profile.phone.toString() 
+        Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
+              {text: 'ตกลง', onPress: () => {Actions.Login()}},
+            ])
       }
-      }
+      
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth()+1; 
@@ -50,10 +56,11 @@ class Comment extends Component{
         var today = yyyy+'-'+mm+'-'+dd;
         var time = hh+'.'+mi;
         //console.log(today)
-        this.setState({
+        this.state = {
+            ...this.state,
             r_date :today,
             r_time :time
-        });
+        }
     }
 
     onValueChangeB (value: string) {
@@ -69,7 +76,16 @@ class Comment extends Component{
     }
 
     sentForm() {
-        this.props.createRecom(this.state)
+        console.log(this.state)
+        if(this.props.profile === undefined)
+      {
+        Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
+              {text: 'ตกลง', onPress: () => {Actions.Login()}},
+            ])
+      }else alert("success")
+        //this.props.createRecom(this.state)
+        
+
     }
 
   render(){

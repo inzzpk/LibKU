@@ -31,8 +31,10 @@ export function fetchProfile(user,password) {
 			console.log("ไม่ถูก")
 		else{
 			dispatch(requestProfileSuccess(res))
-			dispatch(Actions.Profile)
+			//dispatch(Actions.Profile)
 			console.log(res)
+			dispatch(Actions.pop)
+			
 		}
 		})
 		.catch((err) => {

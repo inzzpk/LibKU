@@ -1,5 +1,5 @@
 import React ,{Component} from 'react'
-import {View , Text , StyleSheet} from 'react-native'
+import {View , Text , StyleSheet,Alert} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { Container, Content, Tabs, List, ListItem, InputGroup, Input, Icon, Button, Picker  } from 'native-base'
 import { connect } from 'react-redux'
@@ -14,10 +14,10 @@ class Book extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            // name: this.props.profile.th_name.toString(),
-            // email: this.props.profile.mail.toString(),
-            // phone: this.props.profile.phone.toString(), 
-            // barcode: this.props.profile.barcode.toString(), 
+            name: '',
+            email: '',
+            phone: '',
+            barcode: '',
             destination: 'ห้องสมุดคณะประมง',
             b_title1: '',
             b_author1: '',
@@ -35,9 +35,22 @@ class Book extends Component{
         }
     }
 
+    componentWillReceiveProps (nextProps) {
+
+      this.setState({
+        name: nextProps.profile.th_name.toString(),
+        email: nextProps.profile.mail.toString(),
+        phone: nextProps.profile.phone.toString(),
+        barcode: nextProps.profile.barcode.toString()
+      })
+
+    }
+
     componentWillMount() {
         if(this.props.profile === undefined){
-            console.log("Nooo")
+            Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
+              {text: 'ตกลง', onPress: () => {Actions.Login()}},
+            ])
         }else{
             var res = this.props.profile.faculty.toString()
             var split = res.split(".")
@@ -45,11 +58,8 @@ class Book extends Component{
             //console.log(len)
             var split1 = split[len].split(" ")
             this.state = {
+                ...this.state,
                 fac :split1[0],
-                name: this.props.profile.th_name.toString(),
-                email: this.props.profile.mail.toString(),
-                phone: this.props.profile.phone.toString(), 
-                barcode: this.props.profile.barcode.toString()
             }
         }
 
@@ -68,10 +78,11 @@ class Book extends Component{
         var today = yyyy+'-'+mm+'-'+dd;
         var time = hh+':'+mi+':'+ss;
         //console.log(today)
-        this.setState({
+        this.state = {
+            ...this.state,
             date :today,
             time :time
-        });
+        }
     }
 
     onValueChange (value: string) {
@@ -81,7 +92,9 @@ class Book extends Component{
     }
 
     sentForm() {
-        this.props.createDeli(this.state)
+        console.log(this.state)
+        //this.props.createDeli(this.state)
+        alert("success")
     }
 
 

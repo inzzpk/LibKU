@@ -1,5 +1,5 @@
 import React ,{Component} from 'react'
-import {View , Text , StyleSheet} from 'react-native'
+import {View , Text , StyleSheet,Alert} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import { Container, Content, Tabs, List, ListItem, InputGroup, Input, Icon, Button, Picker  } from 'native-base'
 import { connect } from 'react-redux'
@@ -11,14 +11,17 @@ const Item = Picker.Item;
 
 class Article extends Component{
 
-		constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
-            // name: this.props.profile.th_name.toString(),
-            // email: this.props.profile.mail.toString(),
-            // phone: this.props.profile.phone.toString(), 
-            // barcode: this.props.profile.barcode.toString(), 
+            name: '',
+            email: '',
+            phone: '',
+            barcode: '',
             destination: 'ห้องสมุดคณะประมง',
+            b_title1: '',
+            b_author1: '',
+            b_call1: '',
             a_author1: '',
             a_title1: '',
             a_journal1: '',
@@ -28,16 +31,24 @@ class Article extends Component{
             a_fp1: '',
             a_tp1: '',
             a_ttp1: '',
-            b_title1: '',
-            b_author1: '',
-            b_call1: ''
+
         }
     }
 
+    componentWillReceiveProps (nextProps) {
+
+      this.setState({
+        name: nextProps.profile.th_name.toString(),
+        email: nextProps.profile.mail.toString(),
+        phone: nextProps.profile.phone.toString(),
+        barcode: nextProps.profile.barcode.toString()
+      })
+
+    }
+
     componentWillMount() {
-              if(this.props.profile === undefined)
-      {
-        console.log("Nooo")
+      if(this.props.profile === undefined){
+        console.log("Noooo")
       }else
       {var res = this.props.profile.faculty.toString()
         var split = res.split(".")
@@ -45,11 +56,12 @@ class Article extends Component{
         //console.log(len)
         var split1 = split[len].split(" ")
         this.state = {
+          ...this.state,
           fac :split1[0],
-          name: this.props.profile.th_name.toString(),
-          email: this.props.profile.mail.toString(),
-          phone: this.props.profile.phone.toString(), 
-          barcode: this.props.profile.barcode.toString()
+          // name: this.props.profile.th_name.toString(),
+          // email: this.props.profile.mail.toString(),
+          // phone: this.props.profile.phone.toString(), 
+          // barcode: this.props.profile.barcode.toString()
       }
     }
         
@@ -68,10 +80,11 @@ class Article extends Component{
         var today = yyyy+'-'+mm+'-'+dd;
         var time = hh+':'+mi+':'+ss;
         //console.log(today)
-        this.setState({
+        this.state = {
+            ...this.state,
             date :today,
             time :time
-        });
+        }
     }
 
     onValueChange (value: string) {
@@ -81,7 +94,9 @@ class Article extends Component{
     }
 
     sentForm() {
-        this.props.createDeli(this.state)
+        console.log(this.state)
+        //this.props.createDeli(this.state)
+        alert("success")
     }
 
 
@@ -117,7 +132,7 @@ class Article extends Component{
                     
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='ฉบับ/เล่ม (Number)' value={this.state.a_no1} onChangeText={(a_author1) => this.setState({a_no1})}/>
+                <Input placeholder='ฉบับ/เล่ม (Number)' value={this.state.a_no1} onChangeText={(a_no1) => this.setState({a_no1})}/>
               </InputGroup>
             </ListItem>
                     
@@ -141,7 +156,7 @@ class Article extends Component{
                     
             <ListItem>
               <InputGroup style={styles.box}>
-                <Input placeholder='รวมหน้า (Total Pages)' value={this.state.a_ttp1} onChangeText={(a_author1) => this.setState({a_ttp1})}/>
+                <Input placeholder='รวมหน้า (Total Pages)' value={this.state.a_ttp1} onChangeText={(a_ttp1) => this.setState({a_ttp1})}/>
               </InputGroup>
             </ListItem>
             <Text style={{fontWeight: 'bold' , marginTop: 10 }}>ห้องสมุดที่สะดวกรับ</Text>
@@ -168,7 +183,7 @@ class Article extends Component{
                    </Picker>
           	</ListItem>
           </List>
-          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}> ส่ง </Button>
+          <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }} onPress={()=> this.sentForm() }> ส่ง </Button>
 				</Content>
       </Container>
 		)

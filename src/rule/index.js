@@ -1,7 +1,7 @@
 import React ,{Component} from 'react'
 import {View ,Image} from 'react-native'
 import {Actions} from 'react-native-router-flux'
-import { Container, Content, List, ListItem, Text } from 'native-base';
+import { Container, Content, List, ListItem, Text, Header, Title, Icon, Button } from 'native-base';
 
 export default class index extends Component{
 	render(){

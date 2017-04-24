@@ -3,9 +3,13 @@ import { AppRegistry, Dimensions, StyleSheet, Text, TouchableHighlight, View } f
 import Camera from 'react-native-camera';
 import axios from 'axios';
 import { API_END_POINT } from './config'
+import { connect } from 'react-redux'
+import * as actions from './actions'
+
+const { fetchProfileByBarcode } = actions
 
 
-export default class BarcodeLogin extends Component {
+class BarcodeLogin extends Component {
 
   constructor(props) {
     super(props);
@@ -17,11 +21,12 @@ export default class BarcodeLogin extends Component {
 
     login() {
       console.log(this.state.barcode_number)
-      axios.get(`${API_END_POINT}/LoginbyBarcode/${this.state.barcode_number}`)
-      .then(res => {console.log(res.data[0].th_name)
-        this.setState({ name: res.data[0].th_name })
-      })        
-      .catch(err => console.log(err))
+      this.props.fetchProfileByBarcode(this.state.barcode_number)
+      // axios.get(`${API_END_POINT}/LoginbyBarcode/${this.state.barcode_number}`)
+      // .then(res => {console.log(res.data[0].th_name)
+      //   this.setState({ name: res.data[0].th_name })
+      // })        
+      // .catch(err => console.log(err))
     
   }
 
@@ -72,3 +77,18 @@ const styles = StyleSheet.create({
     margin: 40
   }
 });
+
+const mapStateToProps = (state) => ({
+    profile: state.profile.val[0]
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchProfileByBarcode(barcode_number){
+    dispatch(fetchProfileByBarcode(barcode_number))
+  }
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(BarcodeLogin)

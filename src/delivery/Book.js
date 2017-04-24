@@ -93,8 +93,23 @@ class Book extends Component{
 
     sentForm() {
         console.log(this.state)
-        //this.props.createDeli(this.state)
-        alert("success")
+        if(this.props.profile === undefined)
+        {
+            Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
+                  {text: 'ตกลง', onPress: () => {Actions.Login()}},
+                ])
+        }else {
+            if((this.state.b_title1 === "") || (this.state.b_author1 === "") || (this.state.b_call1 === ""))
+              Alert.alert('','กรุณาใส่ข้อมูลให้ครบ', [
+                  {text: 'ตกลง'}])
+            else{
+              console.log(this.state)
+            //this.props.createDeli(this.state)
+            Alert.alert('','แจ้งการนำส่งหนังสือสำเร็จ', [
+                  {text: 'ตกลง'},
+                ])
+            }
+        }
     }
 
 

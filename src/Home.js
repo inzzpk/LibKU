@@ -4,14 +4,13 @@ var window = Dimensions.get('window');
 import React ,{Component} from 'react'
 import {View ,Image ,StyleSheet ,TouchableOpacity} from 'react-native'
 import {Actions} from 'react-native-router-flux'
-import { Container, Content, List, ListItem, Text, Thumbnail,Button } from 'native-base'
+import { Container, Content, List, ListItem, Text, Thumbnail,Button, Header, Icon, Title } from 'native-base'
 import ImageSlider from 'react-native-image-slider';
 
 
 export default class Home extends Component {
     render() {
     return (
-      
     <View style={styles.container}>          
         <View style={styles.row}> 
           <View style={styles.col}>
@@ -31,9 +30,9 @@ export default class Home extends Component {
           </View>
 
           <View style={styles.col}>
-            <TouchableOpacity onPress={Actions.Comment}>
-              <Image style={styles.img}
-                source={require('./img/comment.png')}
+            <TouchableOpacity onPress={Actions.News}>
+                <Image style={styles.img}
+                  source={require('./img/news.png')}
               />
             </TouchableOpacity>
           </View>
@@ -42,9 +41,9 @@ export default class Home extends Component {
 
         <View style={styles.row}>
           <View style={styles.col}>
-            <TouchableOpacity onPress={Actions.Database}>
-                <Image style={styles.img}
-                  source={require('./img/databases.png')}
+            <TouchableOpacity onPress={Actions.Comment}>
+              <Image style={styles.img}
+                source={require('./img/comment.png')}
                 />
             </TouchableOpacity>
           </View> 
@@ -58,9 +57,9 @@ export default class Home extends Component {
           </View>
 
           <View style={styles.col}>
-            <TouchableOpacity onPress={Actions.News}>
-                <Image style={styles.img}
-                  source={require('./img/reserve.png')}
+            <TouchableOpacity onPress={Actions.Delivery}>
+              <Image style={styles.img}
+                source={require('./img/delivery.png')}
                 />
             </TouchableOpacity>
           </View>
@@ -77,9 +76,9 @@ export default class Home extends Component {
           </View> 
 
           <View style={styles.col}>
-            <TouchableOpacity onPress={Actions.Delivery}>
-              <Image style={styles.img}
-                source={require('./img/delivery.png')}
+            <TouchableOpacity onPress={Actions.Database}>
+                <Image style={styles.img}
+                  source={require('./img/databases.png')}
               />
             </TouchableOpacity>
           </View>
@@ -87,12 +86,7 @@ export default class Home extends Component {
 
           
         </View> 
-        <Button bordered info style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
-              onPress={Actions.Login}>
-                        เข้าสู่ระบบ
-          </Button>
     </View>
-      
     )
   }
 }

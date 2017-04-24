@@ -82,10 +82,18 @@ class Comment extends Component{
         Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
               {text: 'ตกลง', onPress: () => {Actions.Login()}},
             ])
-      }else alert("success")
+      }else {
+        if(this.state.r_rec === "")
+          Alert.alert('','กรุณาใส่ข้อร้องเรียน / เสนอแนะ', [
+              {text: 'ตกลง'}])
+        else{
+          console.log(this.state)
         //this.props.createRecom(this.state)
-        
-
+        Alert.alert('','ส่งข้อร้องเรียน/เสนอแนะ สำเร็จ', [
+              {text: 'ตกลง'},
+            ])
+        }
+      }
     }
 
   render(){

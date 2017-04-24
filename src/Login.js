@@ -26,7 +26,9 @@ class About extends Component {
         this.props.fetchProfile(this.state.email, this.state.password)
     }
 
-
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps)
+    }
     render() {
         return (
             <Container>
@@ -67,6 +69,7 @@ class About extends Component {
 
 
 const mapStateToProps = (state) => ({
+    profile: state.profile.val[0]
 })
 
 const mapDispatchToProps = (dispatch) => ({

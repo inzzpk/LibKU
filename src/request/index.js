@@ -19,37 +19,50 @@ class index extends Component{
             r_author: '',
             r_isbn: '',
             r_pub: '',
-            r_name: '',
-            r_mail: '',
-            r_tel: ''
+            r_name: this.props.profile?this.props.profile.th_name:'',
+            r_mail: this.props.profile?this.props.profile.mail:'',
+            r_tel: this.props.profile?this.props.profile.phone:''
             // r_fac: '',
             // r_year: '',
             // r_date: ''
         }
     }
 
-    componentWillReceiveProps (nextProps) {
 
+    componentWillReceiveProps (nextProps) {
+      console.log(nextProps.bookInfo)
       this.setState({
-        r_title: nextProps.bookInfo.title.toString(),
+        r_title: nextProps.bookInfo.title,
         r_type: 'หนังสือภาษาไทย',
-        r_author: nextProps.bookInfo.author.toString(),
-        r_isbn: nextProps.bookInfo.isbn.toString(),
-        r_pub: nextProps.bookInfo.pbulish2.toString(),
-        r_name: nextProps.profile.th_name.toString(),
-        r_mail: nextProps.profile.mail.toString(),
-        r_tel: nextProps.profile.phone.toString()
+        r_author: nextProps.bookInfo.author,
+        r_isbn: nextProps.bookInfo.isbn,
+        r_pub: nextProps.bookInfo.pbulish2,
+        r_name: nextProps.profile.th_name,
+        r_mail: nextProps.profile.mail,
+        r_tel: nextProps.profile.phone
       });
 
     }
 
-    componentWillMount() {
-      if(this.props.profile === undefined)
-      {
+
+    checkLogined(){
+      if(this.props.profile === undefined){
         Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
-              {text: 'ตกลง', onPress: () => {Actions.Login()}},
+              {text: 'ตกลง', onPress: () => { Actions.Login() }},
+            ])
+      }else{
+        Actions.Barcode()
+      }
+    }
+    
+    componentWillMount() {
+      console.log("Will mountaa")
+      if(this.props.profile === undefined){
+        Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
+              {text: 'ตกลง', onPress: () => { Actions.Login() }},
             ])
       }
+      // this.checkLogined()
     }
 
    getProfileInfo() {
@@ -93,10 +106,24 @@ class index extends Component{
     }
 
     sentForm() { 
-      this.getProfileInfo()
-      console.log(this.state)
-      //this.props.createRequest(this.state)
-      alert("success")
+        if(this.props.profile === undefined)
+      {
+        Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
+              {text: 'ตกลง', onPress: () => {Actions.Login()}},
+            ])
+      }else {
+        if((this.state.r_title === "") || (this.state.r_author === "") )
+          Alert.alert('','กรุณาใส่ชื่อเรื่องและชื่อผู้แต่ง', [
+              {text: 'ตกลง'}])
+        else{
+          this.getProfileInfo()
+          console.log(this.state)
+        //this.props.createRequest(this.state)
+            Alert.alert('','แจ้งการนำส่งหนังสือสำเร็จ', [
+              {text: 'ตกลง'},
+            ])
+          }
+      }
     }
 
 
@@ -106,7 +133,7 @@ class index extends Component{
 		return(
 			 <Container>
         <Content padder>
-        	<TouchableHighlight onPress={Actions.Barcode}>
+        	<TouchableHighlight onPress={ ()=> this.checkLogined() }>
               <Image style={{height: 100 , resizeMode: 'contain' , alignSelf: 'center' , marginBottom: 20}}
               source={require('./img/barcode.png') }
               />
@@ -183,7 +210,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   profile: state.profile.val[0],
-  bookInfo: state.bookInfo.valu[0]
+  bookInfo: state.bookInfo.valu
 })
 
 const mapDispatchToProps = (dispatch) => ({

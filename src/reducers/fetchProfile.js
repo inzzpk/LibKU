@@ -9,6 +9,7 @@ export const fetchProfile = (state = {
 				isfetching : false
 			}
 		case 'LOAD_PROFILE_SUCCESS':
+			console.log("load success :",action.payload)
 			return {
 				...state,
 				val: action.payload,

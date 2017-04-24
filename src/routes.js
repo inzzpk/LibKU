@@ -1,6 +1,7 @@
 ////////////USE THIS ////////////////
 import React from 'react'
-import {Scene , Router} from 'react-native-router-flux'
+import {StyleSheet} from 'react-native'
+import { Scene, Router, TabBar, Modal, Schema, Actions, Reducer, ActionConst } from 'react-native-router-flux'
 import Home from './Home'
 import About from './About'
 //import Rule from './Rule'
@@ -31,7 +32,9 @@ import testContainer from 'LibKU/src/containers/testContainer'
 
 const RouterComponent = () => {
 	return (
-			<Router sceneStyle={{paddingTop: 65}} navigationBarStyle={{backgroundColor: '#40E0D0' }}>
+			<Router sceneStyle={{paddingTop: 65}} navigationBarStyle={style.tabBarStyle}>
+			
+              
 				<Scene key='Home' component={Home} title='KU Lib App' />
 				<Scene key='About' component={About} title='About' />
 				<Scene key='Rule' component={Rule} title='ระเบียบการใช้' />
@@ -48,14 +51,25 @@ const RouterComponent = () => {
 				<Scene key='Reserve' component={Reserve} title='จองใช้ทรัพยากร' />
 				<Scene key='Search' component={Search} title='สืบค้นทรัพยากร' />
 				<Scene key='Delivery' component={Delivery} title='นำส่งหนังสือ / บทความ' />
-				<Scene key='Login' component={Login} title='Login' />
+				<Scene key='Login' component={Login} title='เข้าสู่ระบบ' />
 					<Scene key='BarcodeLogin' component={BarcodeLogin} title='BarcodeLogin' />
 					<Scene key='Profile' component={Profile} title='Profile' />
-				<Scene key='News' component={News} title='News' />
+				<Scene key='News' component={News} title='ข่าวประชาสัมพันธ์' />
+				
+       
 			</Router>
 		)
 }
 
 export default RouterComponent
+
+let style = StyleSheet.create({
+        tabBarStyle: {
+        	backgroundColor: '#4aba91',
+            borderTopWidth : .5,
+            borderColor    : '#b7b7b7',
+            opacity        : 1
+        }
+    });
 
 //<Scene key='test' component={testContainer} title='Test' hideNavBar={true} />

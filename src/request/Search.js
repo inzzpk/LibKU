@@ -72,6 +72,10 @@ class Search extends Component {
       this.props.fetchByBarcode(this.state.isbn)
   	}
 
+  	componentDidMount(){ // debuging
+		setTimeout( ()=>this.onBarCodeRead({'data':'9786161800963'}),500) 
+	}
+
 
 
 	renderModal(){		

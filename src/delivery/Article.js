@@ -93,10 +93,30 @@ class Article extends Component{
         });
     }
 
+
     sentForm() {
-        console.log(this.state)
-        //this.props.createDeli(this.state)
-        alert("success")
+      console.log(this.state)
+      if(this.props.profile === undefined)
+      {
+        Alert.alert('','กรุณาเข้าสู่ระบบก่อน', [
+              {text: 'ตกลง', onPress: () => {Actions.Login()}},
+            ])
+      }else {
+        if((this.state.a_title1 === "") || (this.state.a_author1 === "") || 
+          (this.state.a_journal1 === "") || (this.state.a_vol1 === "") || 
+          (this.state.a_no1 === "") || (this.state.a_year1 === "") || 
+          (this.state.a_fp1 === "") || (this.state.a_tp1 === "") || 
+          (this.state.a_ttp1 === ""))
+          Alert.alert('','กรุณาใส่ข้อมูลให้ครบ', [
+            {text: 'ตกลง'}])
+        else{
+            console.log(this.state)
+            //this.props.createDeli(this.state)
+          Alert.alert('','แจ้งการนำส่งวารสารสำเร็จ', [
+                  {text: 'ตกลง'},
+                ])
+            }
+        }
     }
 
 

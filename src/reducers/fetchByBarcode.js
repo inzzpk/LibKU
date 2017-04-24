@@ -1,6 +1,10 @@
 export const fetchByBarcode = (state = {
 	isFetching : false,
-	valu : {}
+	valu : {title:'',
+        author:'',
+        isbn:'',
+        pbulish2:''}
+	// valu : {}
 }, action) =>{
 	switch(action.type) {
 		case 'LOAD_BYBARCODE_REQUEST':
@@ -11,7 +15,7 @@ export const fetchByBarcode = (state = {
 		case 'LOAD_BYBARCODE_SUCCESS':
 			return {
 				...state,
-				valu: action.payload,
+				valu: action.payload[0],
 				isfetching : false
 			}
 		default:

@@ -15,9 +15,9 @@ class Comment extends Component{
    constructor(props) {
         super(props);
         this.state = {
-            r_name: '',
-            r_mail: '',
-            r_tel: '' ,
+            r_name: this.props.profile?this.props.profile.th_name:'',
+            r_mail: this.props.profile?this.props.profile.mail:'',
+            r_tel: this.props.profile?this.props.profile.phone:'',
             r_b: 'ช่วงเกษตรศิลปการ', 
             r_z: 'ชั้น 1', 
             r_rec: ''

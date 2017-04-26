@@ -14,10 +14,10 @@ class Book extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            email: '',
-            phone: '',
-            barcode: '',
+            name: this.props.profile?this.props.profile.th_name:'',
+            email: this.props.profile?this.props.profile.mail:'',
+            phone: this.props.profile?this.props.profile.phone:'',
+            barcode: this.props.profile?this.props.profile.barcode:'',
             destination: 'ห้องสมุดคณะประมง',
             b_title1: '',
             b_author1: '',

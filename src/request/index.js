@@ -54,7 +54,7 @@ class index extends Component{
         Actions.Barcode()
       }
     }
-    
+
     componentWillMount() {
       console.log("Will mountaa")
       if(this.props.profile === undefined){
@@ -118,8 +118,8 @@ class index extends Component{
         else{
           this.getProfileInfo()
           console.log(this.state)
-        //this.props.createRequest(this.state)
-            Alert.alert('','แจ้งการนำส่งหนังสือสำเร็จ', [
+          this.props.createRequest(this.state)
+            Alert.alert('','แจ้งการเสนอซื้อทรัพยากรสำเร็จ', [
               {text: 'ตกลง'},
             ])
           }

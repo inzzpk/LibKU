@@ -104,7 +104,7 @@ class Book extends Component{
                   {text: 'ตกลง'}])
             else{
               console.log(this.state)
-            //this.props.createDeli(this.state)
+            this.props.createDeli(this.state)
             Alert.alert('','แจ้งการนำส่งหนังสือสำเร็จ', [
                   {text: 'ตกลง'},
                 ])

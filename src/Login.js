@@ -54,12 +54,6 @@ class About extends Component {
                     onPress={()=> this.login() }>
                         เข้าสู่ระบบ
                     </Button>
-                    <Text>{this.state.name}</Text>
-                    <TouchableHighlight onPress={Actions.BarcodeLogin}>
-                      <Image style={{height: 100 , resizeMode: 'contain' , alignSelf: 'center' , marginBottom: 20}}
-                      source={require('./request/img/barcode.png') }
-                      />
-                    </TouchableHighlight>
                 </Content>
             </Container>
         );
@@ -82,6 +76,14 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(About)
+
+/*
+                    <TouchableHighlight onPress={Actions.BarcodeLogin}>
+                      <Image style={{height: 100 , resizeMode: 'contain' , alignSelf: 'center' , marginBottom: 20}}
+                      source={require('./request/img/barcode.png') }
+                      />
+                    </TouchableHighlight>
+                    */
 
 
 

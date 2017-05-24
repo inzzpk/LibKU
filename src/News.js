@@ -11,8 +11,6 @@ export default class news extends Component {
 
     componentWillMount() {
 
-    //axios.get(`http://localhost:8888/Laravel-LibKU/public/api/news`)
-    //axios.get(`${API_END_POINT}:8888/Laravel-LibKU/public/api/news`)
     axios.get(`${API_END_POINT}/fetchNews`)
       .then(res => this.setState({ news: res.data }))
       .catch(err => console.log(err))
@@ -44,6 +42,3 @@ export default class news extends Component {
     );
   }
 }
-
-///<Thumbnail square size={100} source={{uri: news.image}} />
-///<Thumbnail square size={100} source={require('./img/nov2.jpg')} />

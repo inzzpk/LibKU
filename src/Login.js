@@ -10,13 +10,15 @@ import * as actions from './actions'
 const { fetchProfile } = actions
 
 
-class About extends Component {
+class Login extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            email: '5610503922',
-            password: '20056105039224',
+            // email: '5610503922',
+            // password: '20056105039224',
+            email: '',
+            password: '',
             name: ''
         };
     }
@@ -75,15 +77,8 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(About)
+)(Login)
 
-/*
-                    <TouchableHighlight onPress={Actions.BarcodeLogin}>
-                      <Image style={{height: 100 , resizeMode: 'contain' , alignSelf: 'center' , marginBottom: 20}}
-                      source={require('./request/img/barcode.png') }
-                      />
-                    </TouchableHighlight>
-                    */
 
 
 
